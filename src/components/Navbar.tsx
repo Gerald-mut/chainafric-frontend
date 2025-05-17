@@ -30,7 +30,7 @@ const Navbar = () => {
                 whileTap={{ scale: 0.95 }}
                 className="flex items-center"
               >
-                <span className="text-2xl font-bold bg-gradient-to-r from-purple-500 via-pink-500 to-purple-300 bg-clip-text text-transparent">chainafric</span>
+                <span className="text-2xl font-bold bg-gradient-to-r from-purple-500 via-pink-500 to-purple-300 bg-clip-text text-transparent">ChainAfric</span>
               </motion.div>
             </Link>
           </div>

@@ -10,7 +10,7 @@ const Footer = () => {
           {/* Logo and description */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center mb-4">
-              <h2 className="text-2xl font-bold gradient-text">AfriTrack</h2>
+              <h2 className="text-2xl font-bold gradient-text">ChainAfric</h2>
             </div>
             <p className="text-muted-foreground max-w-md">
               A blockchain explorer reimagined for Africa and the global south — with cultural and linguistic accessibility at its core.
@@ -79,7 +79,7 @@ const Footer = () => {
 
         <div className="mt-8 pt-8 border-t border-muted">
           <p className="text-center text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} AfriTrack. All rights reserved.
+            &copy; {new Date().getFullYear()} ChainAfric. All rights reserved.
           </p>
         </div>
       </div>
