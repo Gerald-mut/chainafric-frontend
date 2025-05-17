@@ -7,7 +7,7 @@ import {
   DropdownMenuTrigger 
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { Check, Language } from "lucide-react";
+import { Check, Languages } from "lucide-react";
 import { motion } from "framer-motion";
 
 const languages = [
@@ -38,7 +38,7 @@ const LanguageSelector = () => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="icon">
-          <Language className="h-4 w-4" />
+          <Languages className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-48 bg-afri-dark border-muted">
