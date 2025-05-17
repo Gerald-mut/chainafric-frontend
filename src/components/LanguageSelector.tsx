@@ -1,5 +1,6 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { 
   DropdownMenu, 
   DropdownMenuContent, 
@@ -9,6 +10,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { Check, Languages } from "lucide-react";
 import { motion } from "framer-motion";
+import { RootState } from "@/redux/store";
+import { setLanguage } from "@/redux/slices/userPreferences";
 
 const languages = [
   { name: "English", code: "en" },
@@ -22,11 +25,17 @@ const languages = [
 ];
 
 const LanguageSelector = () => {
-  const [selectedLanguage, setSelectedLanguage] = useState("en");
+  const dispatch = useDispatch();
+  const selectedLanguageCode = useSelector((state: RootState) => state.userPreferences.language);
+  const [selectedLanguage, setSelectedLanguage] = useState(selectedLanguageCode);
+  
+  useEffect(() => {
+    setSelectedLanguage(selectedLanguageCode);
+  }, [selectedLanguageCode]);
   
   const handleLanguageChange = (languageCode: string) => {
     setSelectedLanguage(languageCode);
-    // In a real app, we would update the app's language here
+    dispatch(setLanguage(languageCode));
     localStorage.setItem("preferredLanguage", languageCode);
   };
   
@@ -41,7 +50,7 @@ const LanguageSelector = () => {
           <Languages className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-48 bg-afri-dark border-muted">
+      <DropdownMenuContent align="end" className="w-48 bg-card border-muted">
         <div className="py-2 px-3 text-xs text-muted-foreground font-medium">
           Select Language
         </div>

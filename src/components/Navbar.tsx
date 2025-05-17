@@ -5,9 +5,18 @@ import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import { Search, Menu, X, Wallet } from "lucide-react";
 import LanguageSelector from "./LanguageSelector";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      window.location.href = `/address/${searchQuery}`;
+    }
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-afri-dark/80 backdrop-blur-lg border-b border-muted">
@@ -21,7 +30,7 @@ const Navbar = () => {
                 whileTap={{ scale: 0.95 }}
                 className="flex items-center"
               >
-                <span className="text-2xl font-bold gradient-text">AfriTrack</span>
+                <span className="text-2xl font-bold bg-gradient-to-r from-purple-500 via-pink-500 to-purple-300 bg-clip-text text-transparent">AfriTrack</span>
               </motion.div>
             </Link>
           </div>
@@ -43,15 +52,18 @@ const Navbar = () => {
 
           {/* Right side - Search and Connect */}
           <div className="hidden md:flex items-center space-x-3">
-            <div className="relative">
+            <form onSubmit={handleSearch} className="relative">
               <input
                 type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search address or ENS..."
                 className="pl-10 pr-4 py-2 w-64 rounded-lg text-sm bg-muted border border-border focus:outline-none focus:ring-2 focus:ring-primary"
               />
               <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
-            </div>
+            </form>
             
+            <ThemeToggle />
             <LanguageSelector />
             
             <Button variant="outline" className="flex items-center gap-2">
@@ -61,7 +73,8 @@ const Navbar = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center space-x-2">
+            <ThemeToggle />
             <Button 
               variant="ghost" 
               size="icon" 
@@ -99,14 +112,16 @@ const Navbar = () => {
           </div>
           
           <div className="px-4 py-3 border-t border-muted">
-            <div className="flex items-center mb-3">
+            <form onSubmit={handleSearch} className="flex items-center mb-3 relative">
               <input
                 type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search address or ENS..."
                 className="pl-10 pr-4 py-2 w-full rounded-lg text-sm bg-muted border border-border focus:outline-none focus:ring-2 focus:ring-primary"
               />
-              <Search className="absolute left-7 top-[19.75rem] h-4 w-4 text-gray-400" />
-            </div>
+              <Search className="absolute left-3 h-4 w-4 text-gray-400" />
+            </form>
             
             <div className="flex items-center justify-between">
               <LanguageSelector />
