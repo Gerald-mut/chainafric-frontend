@@ -1,4 +1,5 @@
 
+import React from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -15,33 +16,38 @@ import TransactionPage from "./pages/TransactionPage";
 import NotFound from "./pages/NotFound";
 import ThemeProvider from "./providers/ThemeProvider";
 
+// Create the query client outside the component
 const queryClient = new QueryClient();
 
-const App = () => (
-  // Make sure Redux Provider is the outermost provider since components are using Redux hooks
-  <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <BrowserRouter>
-        <ThemeProvider>
-          <QueryClientProvider client={queryClient}>
-            <TooltipProvider>
-              <Toaster />
-              <Sonner />
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/explore" element={<ExplorePage />} />
-                <Route path="/dashboard" element={<DashboardPage />} />
-                <Route path="/address/:address" element={<AddressPage />} />
-                <Route path="/tx/:txHash" element={<TransactionPage />} />
-                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </TooltipProvider>
-          </QueryClientProvider>
-        </ThemeProvider>
-      </BrowserRouter>
-    </PersistGate>
-  </Provider>
-);
+const App: React.FC = () => {
+  return (
+    <React.StrictMode>
+      {/* Redux Provider must be the outermost provider */}
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <BrowserRouter>
+            <ThemeProvider>
+              <QueryClientProvider client={queryClient}>
+                <TooltipProvider>
+                  <Toaster />
+                  <Sonner />
+                  <Routes>
+                    <Route path="/" element={<Index />} />
+                    <Route path="/explore" element={<ExplorePage />} />
+                    <Route path="/dashboard" element={<DashboardPage />} />
+                    <Route path="/address/:address" element={<AddressPage />} />
+                    <Route path="/tx/:txHash" element={<TransactionPage />} />
+                    {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
+                </TooltipProvider>
+              </QueryClientProvider>
+            </ThemeProvider>
+          </BrowserRouter>
+        </PersistGate>
+      </Provider>
+    </React.StrictMode>
+  );
+};
 
 export default App;
