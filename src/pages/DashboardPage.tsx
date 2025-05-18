@@ -1,18 +1,14 @@
 
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useWalletConnection } from "@/hooks/useWalletConnection";
+import ConnectWallet from "@/components/ConnectWallet";
+import WalletDetails from "@/components/WalletDetails";
 import { Wallet } from "lucide-react";
-import { useState } from "react";
 
 const DashboardPage = () => {
-  const [isConnected, setIsConnected] = useState(false);
-
-  const handleConnect = () => {
-    // In a real app, we'd connect to Web3 wallet here
-    setIsConnected(true);
-  };
+  const { isConnected } = useWalletConnection();
 
   return (
     <Layout>
@@ -42,12 +38,7 @@ const DashboardPage = () => {
                     <p className="text-center mb-6 max-w-md text-muted-foreground">
                       Connect your wallet to view your tokens, NFTs, transaction history and more — all in one place.
                     </p>
-                    <Button 
-                      onClick={handleConnect} 
-                      className="bg-primary hover:bg-primary/90"
-                    >
-                      Connect Wallet
-                    </Button>
+                    <ConnectWallet />
                   </div>
                 </CardContent>
               </Card>
@@ -57,7 +48,7 @@ const DashboardPage = () => {
                   <CardHeader>
                     <CardTitle>Wallet Connected</CardTitle>
                     <CardDescription>
-                      0x1234...5678
+                      <WalletDetails />
                     </CardDescription>
                   </CardHeader>
                   <CardContent>

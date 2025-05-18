@@ -15,6 +15,7 @@ import AddressPage from "./pages/AddressPage";
 import TransactionPage from "./pages/TransactionPage";
 import NotFound from "./pages/NotFound";
 import ThemeProvider from "./providers/ThemeProvider";
+import { WalletProvider } from "./providers/WalletProvider";
 
 // Create the query client outside the component
 const queryClient = new QueryClient();
@@ -28,19 +29,21 @@ const App: React.FC = () => {
           <BrowserRouter>
             <ThemeProvider>
               <QueryClientProvider client={queryClient}>
-                <TooltipProvider>
-                  <Toaster />
-                  <Sonner />
-                  <Routes>
-                    <Route path="/" element={<Index />} />
-                    <Route path="/explore" element={<ExplorePage />} />
-                    <Route path="/dashboard" element={<DashboardPage />} />
-                    <Route path="/address/:address" element={<AddressPage />} />
-                    <Route path="/tx/:txHash" element={<TransactionPage />} />
-                    {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                    <Route path="*" element={<NotFound />} />
-                  </Routes>
-                </TooltipProvider>
+                <WalletProvider>
+                  <TooltipProvider>
+                    <Toaster />
+                    <Sonner />
+                    <Routes>
+                      <Route path="/" element={<Index />} />
+                      <Route path="/explore" element={<ExplorePage />} />
+                      <Route path="/dashboard" element={<DashboardPage />} />
+                      <Route path="/address/:address" element={<AddressPage />} />
+                      <Route path="/tx/:txHash" element={<TransactionPage />} />
+                      {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                      <Route path="*" element={<NotFound />} />
+                    </Routes>
+                  </TooltipProvider>
+                </WalletProvider>
               </QueryClientProvider>
             </ThemeProvider>
           </BrowserRouter>
