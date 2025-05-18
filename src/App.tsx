@@ -22,34 +22,31 @@ const queryClient = new QueryClient();
 
 const App: React.FC = () => {
   return (
-    <React.StrictMode>
-      {/* Redux Provider must be the outermost provider */}
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <BrowserRouter>
-            <ThemeProvider>
-              <QueryClientProvider client={queryClient}>
-                <WalletProvider>
-                  <TooltipProvider>
-                    <Toaster />
-                    <Sonner />
-                    <Routes>
-                      <Route path="/" element={<Index />} />
-                      <Route path="/explore" element={<ExplorePage />} />
-                      <Route path="/dashboard" element={<DashboardPage />} />
-                      <Route path="/address/:address" element={<AddressPage />} />
-                      <Route path="/tx/:txHash" element={<TransactionPage />} />
-                      {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                      <Route path="*" element={<NotFound />} />
-                    </Routes>
-                  </TooltipProvider>
-                </WalletProvider>
-              </QueryClientProvider>
-            </ThemeProvider>
-          </BrowserRouter>
-        </PersistGate>
-      </Provider>
-    </React.StrictMode>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <BrowserRouter>
+          <ThemeProvider>
+            <QueryClientProvider client={queryClient}>
+              <WalletProvider>
+                <TooltipProvider>
+                  <Toaster />
+                  <Sonner />
+                  <Routes>
+                    <Route path="/" element={<Index />} />
+                    <Route path="/explore" element={<ExplorePage />} />
+                    <Route path="/dashboard" element={<DashboardPage />} />
+                    <Route path="/address/:address" element={<AddressPage />} />
+                    <Route path="/tx/:txHash" element={<TransactionPage />} />
+                    {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
+                </TooltipProvider>
+              </WalletProvider>
+            </QueryClientProvider>
+          </ThemeProvider>
+        </BrowserRouter>
+      </PersistGate>
+    </Provider>
   );
 };
 
