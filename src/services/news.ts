@@ -1,5 +1,7 @@
+import { fetchNewsFromApi } from './newsDataApi';
+import { AppNewsItem } from './newsDataApi';
 
-// Mock news data - Replace with real API calls in production
+// Mock news data - used as fallback if API fails
 const mockNews = {
   all: [
     {
@@ -133,10 +135,31 @@ const mockNews = {
   ]
 };
 
-export const fetchNews = async (category: string = 'all') => {
-  // Simulate API call delay
-  await new Promise(resolve => setTimeout(resolve, 800));
-  
-  // Return mock data based on the selected category
-  return mockNews[category as keyof typeof mockNews] || mockNews.all;
+export const fetchNews = async (category: string = 'all'): Promise<AppNewsItem[]> => {
+  try {
+    // Try to fetch from the API first
+    const apiNews = await fetchNewsFromApi(category);
+    
+    // If we got results, return them
+    if (apiNews && apiNews.length > 0) {
+      return apiNews;
+    }
+    
+    // Otherwise fall back to mock data
+    console.log("Falling back to mock news data");
+    
+    // Simulate API call delay
+    await new Promise(resolve => setTimeout(resolve, 800));
+    
+    // Return mock data based on the selected category
+    return mockNews[category as keyof typeof mockNews] || mockNews.all;
+  } catch (error) {
+    console.error("Error in fetchNews:", error);
+    
+    // Simulate API call delay
+    await new Promise(resolve => setTimeout(resolve, 800));
+    
+    // Return mock data based on the selected category
+    return mockNews[category as keyof typeof mockNews] || mockNews.all;
+  }
 };

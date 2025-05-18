@@ -5,8 +5,10 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import { fetchNews } from "@/services/news";
+import { AppNewsItem } from "@/services/newsDataApi";
+import { toast } from "@/hooks/use-toast";
 
 const categories = [
   { id: "all", label: "All" },
@@ -18,7 +20,7 @@ const categories = [
 
 const NewsSection = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const [news, setNews] = useState<any[]>([]);
+  const [news, setNews] = useState<AppNewsItem[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -29,6 +31,11 @@ const NewsSection = () => {
         setNews(newsData);
       } catch (error) {
         console.error("Failed to fetch news:", error);
+        toast({
+          title: "Error loading news",
+          description: "We couldn't load the latest news. Please try again later.",
+          variant: "destructive",
+        });
       } finally {
         setLoading(false);
       }
@@ -69,10 +76,14 @@ const NewsSection = () => {
                 Array(6).fill(0).map((_, i) => (
                   <NewsCardSkeleton key={i} />
                 ))
-              ) : (
+              ) : news.length > 0 ? (
                 news.map((item, index) => (
-                  <NewsCard key={index} article={item} delay={index * 0.1} />
+                  <NewsCard key={item.id || index} article={item} delay={index * 0.1} />
                 ))
+              ) : (
+                <div className="col-span-full text-center py-12">
+                  <p className="text-muted-foreground">No news found for this category. Please try another category.</p>
+                </div>
               )}
             </div>
           </TabsContent>
@@ -89,7 +100,7 @@ const NewsSection = () => {
   );
 };
 
-const NewsCard = ({ article, delay }: { article: any, delay: number }) => (
+const NewsCard = ({ article, delay }: { article: AppNewsItem, delay: number }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
@@ -101,6 +112,10 @@ const NewsCard = ({ article, delay }: { article: any, delay: number }) => (
           src={article.imageUrl} 
           alt={article.title} 
           className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.src = "https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=800";
+          }}
         />
       </div>
       <CardHeader>
@@ -112,10 +127,12 @@ const NewsCard = ({ article, delay }: { article: any, delay: number }) => (
         <CardDescription className="line-clamp-2">{article.summary}</CardDescription>
       </CardHeader>
       <CardFooter>
-        <Button variant="ghost" className="group mt-auto w-full justify-start p-0 hover:bg-transparent">
-          Read more
-          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-        </Button>
+        <a href={article.url} target="_blank" rel="noopener noreferrer" className="w-full">
+          <Button variant="ghost" className="group mt-auto w-full justify-start p-0 hover:bg-transparent">
+            Read more
+            <ExternalLink className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+          </Button>
+        </a>
       </CardFooter>
     </Card>
   </motion.div>
