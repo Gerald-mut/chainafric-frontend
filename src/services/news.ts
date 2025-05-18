@@ -1,3 +1,4 @@
+
 import { fetchNewsFromApi } from './newsDataApi';
 import { AppNewsItem } from './newsDataApi';
 
@@ -10,7 +11,8 @@ const mockNews = {
       summary: "Layer 2 scaling solutions are becoming increasingly important for Ethereum. Learn how they work and why they matter.",
       category: "Learn",
       date: "May 15, 2025",
-      imageUrl: "https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=800"
+      imageUrl: "https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=800",
+      url: "https://example.com/layer2-solutions" // Added URL
     },
     {
       id: "2",
@@ -18,7 +20,8 @@ const mockNews = {
       summary: "Security alert: A sophisticated phishing campaign is targeting MetaMask users. Learn how to protect yourself.",
       category: "Security Alerts",
       date: "May 14, 2025",
-      imageUrl: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?q=80&w=800"
+      imageUrl: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?q=80&w=800",
+      url: "https://example.com/metamask-phishing" // Added URL
     },
     {
       id: "3",
@@ -26,7 +29,8 @@ const mockNews = {
       summary: "These emerging NFT collections are gaining traction and could be the next big thing in the digital art world.",
       category: "NFTs",
       date: "May 12, 2025",
-      imageUrl: "https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?q=80&w=800"
+      imageUrl: "https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?q=80&w=800",
+      url: "https://example.com/nft-collections-2025" // Added URL
     },
     {
       id: "4",
@@ -34,7 +38,8 @@ const mockNews = {
       summary: "A beginner's guide to yield farming in DeFi - maximize your returns while understanding the risks.",
       category: "DeFi",
       date: "May 10, 2025",
-      imageUrl: "https://images.unsplash.com/photo-1620321023374-d1a68fbc720d?q=80&w=800"
+      imageUrl: "https://images.unsplash.com/photo-1620321023374-d1a68fbc720d?q=80&w=800",
+      url: "https://example.com/defi-yield-farming" // Added URL
     },
     {
       id: "5",
@@ -42,7 +47,8 @@ const mockNews = {
       summary: "A step-by-step guide for beginners on setting up and securing your first cryptocurrency wallet.",
       category: "Learn",
       date: "May 8, 2025",
-      imageUrl: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?q=80&w=800"
+      imageUrl: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?q=80&w=800",
+      url: "https://example.com/crypto-wallet-setup" // Added URL
     },
     {
       id: "6",
@@ -50,7 +56,8 @@ const mockNews = {
       summary: "Exploring how cryptocurrency adoption is transforming financial systems across African nations.",
       category: "Learn",
       date: "May 5, 2025",
-      imageUrl: "https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?q=80&w=800"
+      imageUrl: "https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?q=80&w=800",
+      url: "https://example.com/crypto-african-economies" // Added URL
     }
   ],
   nfts: [
@@ -60,7 +67,8 @@ const mockNews = {
       summary: "These emerging NFT collections are gaining traction and could be the next big thing in the digital art world.",
       category: "NFTs",
       date: "May 12, 2025",
-      imageUrl: "https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?q=80&w=800"
+      imageUrl: "https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?q=80&w=800",
+      url: "https://example.com/nft-collections-2025" // Added URL
     },
     {
       id: "7",
@@ -68,7 +76,8 @@ const mockNews = {
       summary: "A comprehensive comparison of the most popular NFT marketplaces, their fees, and unique features.",
       category: "NFTs",
       date: "May 3, 2025",
-      imageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800"
+      imageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800",
+      url: "https://example.com/nft-marketplaces" // Added URL
     }
   ],
   defi: [
@@ -78,7 +87,8 @@ const mockNews = {
       summary: "A beginner's guide to yield farming in DeFi - maximize your returns while understanding the risks.",
       category: "DeFi",
       date: "May 10, 2025",
-      imageUrl: "https://images.unsplash.com/photo-1620321023374-d1a68fbc720d?q=80&w=800"
+      imageUrl: "https://images.unsplash.com/photo-1620321023374-d1a68fbc720d?q=80&w=800",
+      url: "https://example.com/defi-yield-farming" // Added URL
     },
     {
       id: "8",
@@ -86,7 +96,8 @@ const mockNews = {
       summary: "Understanding how decentralized exchanges work and their advantages over traditional centralized platforms.",
       category: "DeFi",
       date: "May 1, 2025",
-      imageUrl: "https://images.unsplash.com/photo-1639762681057-408e52192e55?q=80&w=800"
+      imageUrl: "https://images.unsplash.com/photo-1639762681057-408e52192e55?q=80&w=800",
+      url: "https://example.com/dex-explained" // Added URL
     }
   ],
   scams: [
@@ -96,7 +107,8 @@ const mockNews = {
       summary: "Security alert: A sophisticated phishing campaign is targeting MetaMask users. Learn how to protect yourself.",
       category: "Security Alerts",
       date: "May 14, 2025",
-      imageUrl: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?q=80&w=800"
+      imageUrl: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?q=80&w=800",
+      url: "https://example.com/metamask-phishing" // Added URL
     },
     {
       id: "9",
@@ -104,7 +116,8 @@ const mockNews = {
       summary: "Learn about the most common security vulnerabilities in smart contracts and how to avoid them.",
       category: "Security Alerts",
       date: "April 28, 2025",
-      imageUrl: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?q=80&w=800"
+      imageUrl: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?q=80&w=800",
+      url: "https://example.com/smart-contract-vulnerabilities" // Added URL
     }
   ],
   beginner: [
@@ -114,7 +127,8 @@ const mockNews = {
       summary: "Layer 2 scaling solutions are becoming increasingly important for Ethereum. Learn how they work and why they matter.",
       category: "Learn",
       date: "May 15, 2025",
-      imageUrl: "https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=800"
+      imageUrl: "https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=800",
+      url: "https://example.com/layer2-solutions" // Added URL
     },
     {
       id: "5",
@@ -122,7 +136,8 @@ const mockNews = {
       summary: "A step-by-step guide for beginners on setting up and securing your first cryptocurrency wallet.",
       category: "Learn",
       date: "May 8, 2025",
-      imageUrl: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?q=80&w=800"
+      imageUrl: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?q=80&w=800",
+      url: "https://example.com/crypto-wallet-setup" // Added URL
     },
     {
       id: "6",
@@ -130,7 +145,8 @@ const mockNews = {
       summary: "Exploring how cryptocurrency adoption is transforming financial systems across African nations.",
       category: "Learn",
       date: "May 5, 2025",
-      imageUrl: "https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?q=80&w=800"
+      imageUrl: "https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?q=80&w=800",
+      url: "https://example.com/crypto-african-economies" // Added URL
     }
   ]
 };
