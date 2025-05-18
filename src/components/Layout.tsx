@@ -1,6 +1,5 @@
 
-import { motion, AnimatePresence } from "framer-motion";
-import { useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
@@ -24,24 +23,19 @@ const pageVariants = {
 };
 
 const Layout = ({ children }: LayoutProps) => {
-  const location = useLocation();
-  
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <AnimatePresence mode="wait">
-        <motion.main
-          key={location.pathname}
-          initial="initial"
-          animate="in"
-          exit="exit"
-          variants={pageVariants}
-          transition={{ type: "tween", duration: 0.3 }}
-          className="flex-grow"
-        >
-          {children}
-        </motion.main>
-      </AnimatePresence>
+      <motion.main
+        initial="initial"
+        animate="in"
+        exit="exit"
+        variants={pageVariants}
+        transition={{ type: "tween", duration: 0.3 }}
+        className="flex-grow"
+      >
+        {children}
+      </motion.main>
       <Footer />
     </div>
   );
