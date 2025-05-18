@@ -32,7 +32,7 @@ const Layout = ({ children }: LayoutProps) => {
         exit="exit"
         variants={pageVariants}
         transition={{ type: "tween", duration: 0.3 }}
-        className="flex-grow"
+        className="flex-grow pt-24" // Added padding-top (pt-24) here to create more space below navbar
       >
         {children}
       </motion.main>
