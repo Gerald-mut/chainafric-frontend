@@ -18,12 +18,13 @@ import ThemeProvider from "./providers/ThemeProvider";
 const queryClient = new QueryClient();
 
 const App = () => (
+  // Make sure Redux Provider is the outermost provider since components are using Redux hooks
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-      <ThemeProvider>
-        <QueryClientProvider client={queryClient}>
-          <TooltipProvider>
-            <BrowserRouter>
+      <BrowserRouter>
+        <ThemeProvider>
+          <QueryClientProvider client={queryClient}>
+            <TooltipProvider>
               <Toaster />
               <Sonner />
               <Routes>
@@ -35,10 +36,10 @@ const App = () => (
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
-            </BrowserRouter>
-          </TooltipProvider>
-        </QueryClientProvider>
-      </ThemeProvider>
+            </TooltipProvider>
+          </QueryClientProvider>
+        </ThemeProvider>
+      </BrowserRouter>
     </PersistGate>
   </Provider>
 );
