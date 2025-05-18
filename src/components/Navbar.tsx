@@ -6,16 +6,22 @@ import { Button } from "./ui/button";
 import { Search, Menu, X, Wallet } from "lucide-react";
 import LanguageSelector from "./LanguageSelector";
 import ThemeToggle from "./ThemeToggle";
+import { useWalletConnection } from "@/hooks/useWalletConnection";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const { connectWallet, isConnected, address } = useWalletConnection();
   
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
       window.location.href = `/address/${searchQuery}`;
     }
+  };
+
+  const handleWalletConnect = () => {
+    connectWallet();
   };
 
   return (
@@ -66,9 +72,9 @@ const Navbar = () => {
             <ThemeToggle />
             <LanguageSelector />
             
-            <Button variant="outline" className="flex items-center gap-2">
+            <Button variant="outline" className="flex items-center gap-2" onClick={handleWalletConnect}>
               <Wallet className="h-4 w-4" />
-              <span>Connect</span>
+              <span>{isConnected ? `${address?.slice(0, 6)}...${address?.slice(-4)}` : 'Connect'}</span>
             </Button>
           </div>
 
@@ -126,9 +132,9 @@ const Navbar = () => {
             <div className="flex items-center justify-between">
               <LanguageSelector />
               
-              <Button variant="outline" className="flex items-center gap-2" size="sm">
+              <Button variant="outline" className="flex items-center gap-2" size="sm" onClick={handleWalletConnect}>
                 <Wallet className="h-4 w-4" />
-                <span>Connect</span>
+                <span>{isConnected ? `${address?.slice(0, 6)}...${address?.slice(-4)}` : 'Connect'}</span>
               </Button>
             </div>
           </div>
