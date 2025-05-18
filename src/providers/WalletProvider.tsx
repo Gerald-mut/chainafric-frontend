@@ -1,5 +1,5 @@
 
-import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { createConfig, configureChains, WagmiConfig } from "wagmi";
 import { mainnet, optimism, arbitrum, base } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
