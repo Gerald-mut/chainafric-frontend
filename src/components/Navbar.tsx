@@ -7,11 +7,13 @@ import { Search, Menu, X, Wallet } from "lucide-react";
 import LanguageSelector from "./LanguageSelector";
 import ThemeToggle from "./ThemeToggle";
 import { useWalletConnection } from "@/hooks/useWalletConnection";
+import { useTranslation } from "@/utils/i18n";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const { connectWallet, isConnected, address } = useWalletConnection();
+  const { t } = useTranslation();
   
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -45,13 +47,13 @@ const Navbar = () => {
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-4">
               <Link to="/" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                Home
+                {t('home')}
               </Link>
               <Link to="/explore" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                Explore
+                {t('explore')}
               </Link>
               <Link to="/dashboard" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                Dashboard
+                {t('dashboard')}
               </Link>
             </div>
           </div>
@@ -63,7 +65,7 @@ const Navbar = () => {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search address or ENS..."
+                placeholder={t('search')}
                 className="pl-10 pr-4 py-2 w-64 rounded-lg text-sm bg-muted border border-border focus:outline-none focus:ring-2 focus:ring-primary"
               />
               <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
@@ -74,7 +76,7 @@ const Navbar = () => {
             
             <Button variant="outline" className="flex items-center gap-2" onClick={handleWalletConnect}>
               <Wallet className="h-4 w-4" />
-              <span>{isConnected ? `${address?.slice(0, 6)}...${address?.slice(-4)}` : 'Connect'}</span>
+              <span>{isConnected ? `${address?.slice(0, 6)}...${address?.slice(-4)}` : t('connect')}</span>
             </Button>
           </div>
 
@@ -107,13 +109,13 @@ const Navbar = () => {
         >
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <Link to="/" className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
-              Home
+              {t('home')}
             </Link>
             <Link to="/explore" className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
-              Explore
+              {t('explore')}
             </Link>
             <Link to="/dashboard" className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
-              Dashboard
+              {t('dashboard')}
             </Link>
           </div>
           
@@ -123,7 +125,7 @@ const Navbar = () => {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search address or ENS..."
+                placeholder={t('search')}
                 className="pl-10 pr-4 py-2 w-full rounded-lg text-sm bg-muted border border-border focus:outline-none focus:ring-2 focus:ring-primary"
               />
               <Search className="absolute left-3 h-4 w-4 text-gray-400" />
@@ -134,7 +136,7 @@ const Navbar = () => {
               
               <Button variant="outline" className="flex items-center gap-2" size="sm" onClick={handleWalletConnect}>
                 <Wallet className="h-4 w-4" />
-                <span>{isConnected ? `${address?.slice(0, 6)}...${address?.slice(-4)}` : 'Connect'}</span>
+                <span>{isConnected ? `${address?.slice(0, 6)}...${address?.slice(-4)}` : t('connect')}</span>
               </Button>
             </div>
           </div>

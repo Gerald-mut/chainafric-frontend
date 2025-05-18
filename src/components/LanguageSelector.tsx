@@ -12,6 +12,7 @@ import { Check, Languages } from "lucide-react";
 import { motion } from "framer-motion";
 import { RootState } from "@/redux/store";
 import { setLanguage } from "@/redux/slices/userPreferences";
+import { useTranslation } from "@/utils/i18n";
 
 const languages = [
   { name: "English", code: "en" },
@@ -28,6 +29,7 @@ const LanguageSelector = () => {
   const dispatch = useDispatch();
   const selectedLanguageCode = useSelector((state: RootState) => state.userPreferences.language);
   const [selectedLanguage, setSelectedLanguage] = useState(selectedLanguageCode);
+  const { t } = useTranslation();
   
   useEffect(() => {
     setSelectedLanguage(selectedLanguageCode);
@@ -52,7 +54,7 @@ const LanguageSelector = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-48 bg-card border-muted">
         <div className="py-2 px-3 text-xs text-muted-foreground font-medium">
-          Select Language
+          {t('selectLanguage')}
         </div>
         {languages.map((language) => (
           <DropdownMenuItem 
