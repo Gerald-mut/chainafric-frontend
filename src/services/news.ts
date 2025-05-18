@@ -1,4 +1,3 @@
-
 import { fetchNewsFromApi } from './newsDataApi';
 import { AppNewsItem } from './newsDataApi';
 
@@ -12,7 +11,7 @@ const mockNews = {
       category: "Learn",
       date: "May 15, 2025",
       imageUrl: "https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=800",
-      url: "https://example.com/layer2-solutions" // Added URL
+      url: "https://example.com/layer2-solutions"
     },
     {
       id: "2",
@@ -21,7 +20,7 @@ const mockNews = {
       category: "Security Alerts",
       date: "May 14, 2025",
       imageUrl: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?q=80&w=800",
-      url: "https://example.com/metamask-phishing" // Added URL
+      url: "https://example.com/metamask-phishing"
     },
     {
       id: "3",
@@ -30,7 +29,7 @@ const mockNews = {
       category: "NFTs",
       date: "May 12, 2025",
       imageUrl: "https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?q=80&w=800",
-      url: "https://example.com/nft-collections-2025" // Added URL
+      url: "https://example.com/nft-collections-2025"
     },
     {
       id: "4",
@@ -39,7 +38,7 @@ const mockNews = {
       category: "DeFi",
       date: "May 10, 2025",
       imageUrl: "https://images.unsplash.com/photo-1620321023374-d1a68fbc720d?q=80&w=800",
-      url: "https://example.com/defi-yield-farming" // Added URL
+      url: "https://example.com/defi-yield-farming"
     },
     {
       id: "5",
@@ -48,7 +47,7 @@ const mockNews = {
       category: "Learn",
       date: "May 8, 2025",
       imageUrl: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?q=80&w=800",
-      url: "https://example.com/crypto-wallet-setup" // Added URL
+      url: "https://example.com/crypto-wallet-setup"
     },
     {
       id: "6",
@@ -57,7 +56,7 @@ const mockNews = {
       category: "Learn",
       date: "May 5, 2025",
       imageUrl: "https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?q=80&w=800",
-      url: "https://example.com/crypto-african-economies" // Added URL
+      url: "https://example.com/crypto-african-economies"
     }
   ],
   nfts: [
@@ -68,7 +67,7 @@ const mockNews = {
       category: "NFTs",
       date: "May 12, 2025",
       imageUrl: "https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?q=80&w=800",
-      url: "https://example.com/nft-collections-2025" // Added URL
+      url: "https://example.com/nft-collections-2025"
     },
     {
       id: "7",
@@ -77,7 +76,7 @@ const mockNews = {
       category: "NFTs",
       date: "May 3, 2025",
       imageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800",
-      url: "https://example.com/nft-marketplaces" // Added URL
+      url: "https://example.com/nft-marketplaces"
     }
   ],
   defi: [
@@ -88,7 +87,7 @@ const mockNews = {
       category: "DeFi",
       date: "May 10, 2025",
       imageUrl: "https://images.unsplash.com/photo-1620321023374-d1a68fbc720d?q=80&w=800",
-      url: "https://example.com/defi-yield-farming" // Added URL
+      url: "https://example.com/defi-yield-farming"
     },
     {
       id: "8",
@@ -97,7 +96,7 @@ const mockNews = {
       category: "DeFi",
       date: "May 1, 2025",
       imageUrl: "https://images.unsplash.com/photo-1639762681057-408e52192e55?q=80&w=800",
-      url: "https://example.com/dex-explained" // Added URL
+      url: "https://example.com/dex-explained"
     }
   ],
   scams: [
@@ -108,7 +107,7 @@ const mockNews = {
       category: "Security Alerts",
       date: "May 14, 2025",
       imageUrl: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?q=80&w=800",
-      url: "https://example.com/metamask-phishing" // Added URL
+      url: "https://example.com/metamask-phishing"
     },
     {
       id: "9",
@@ -117,7 +116,7 @@ const mockNews = {
       category: "Security Alerts",
       date: "April 28, 2025",
       imageUrl: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?q=80&w=800",
-      url: "https://example.com/smart-contract-vulnerabilities" // Added URL
+      url: "https://example.com/smart-contract-vulnerabilities"
     }
   ],
   beginner: [
@@ -128,7 +127,7 @@ const mockNews = {
       category: "Learn",
       date: "May 15, 2025",
       imageUrl: "https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=800",
-      url: "https://example.com/layer2-solutions" // Added URL
+      url: "https://example.com/layer2-solutions"
     },
     {
       id: "5",
@@ -137,7 +136,7 @@ const mockNews = {
       category: "Learn",
       date: "May 8, 2025",
       imageUrl: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?q=80&w=800",
-      url: "https://example.com/crypto-wallet-setup" // Added URL
+      url: "https://example.com/crypto-wallet-setup"
     },
     {
       id: "6",
@@ -146,7 +145,7 @@ const mockNews = {
       category: "Learn",
       date: "May 5, 2025",
       imageUrl: "https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?q=80&w=800",
-      url: "https://example.com/crypto-african-economies" // Added URL
+      url: "https://example.com/crypto-african-economies"
     }
   ]
 };
@@ -154,15 +153,17 @@ const mockNews = {
 export const fetchNews = async (category: string = 'all'): Promise<AppNewsItem[]> => {
   try {
     // Try to fetch from the API first
+    console.log(`Attempting to fetch ${category} news from API...`);
     const apiNews = await fetchNewsFromApi(category);
     
     // If we got results, return them
     if (apiNews && apiNews.length > 0) {
+      console.log(`Successfully fetched ${apiNews.length} ${category} articles from API`);
       return apiNews;
     }
     
     // Otherwise fall back to mock data
-    console.log("Falling back to mock news data");
+    console.log(`API returned no results for ${category}. Falling back to mock news data`);
     
     // Simulate API call delay
     await new Promise(resolve => setTimeout(resolve, 800));

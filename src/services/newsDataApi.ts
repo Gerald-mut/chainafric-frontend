@@ -41,9 +41,11 @@ export interface AppNewsItem {
 // Default image if none provided by the API
 const DEFAULT_IMAGE = "https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=800";
 
-// NewsData.io API Key
-// In production, this should be stored in a secure environment variable
-const API_KEY = "YOUR_NEWSDATA_API_KEY"; // Replace with your actual API key
+// NewsData.io API Key - can be updated later via user settings
+// Using the provided API key
+const defaultApiKey = "pub_8780477dc182560db859c5664ab8ad92e40ba";
+// Get API key from import.meta.env if it exists, otherwise use default
+const API_KEY = import.meta.env?.VITE_NEWS_API_KEY || defaultApiKey;
 
 // Convert API date format to a friendly date
 const formatDate = (dateString: string): string => {
@@ -90,6 +92,8 @@ const mapCategory = (categories: string[]): string => {
 // Fetch news from NewsData.io API
 export const fetchNewsFromApi = async (category: string = "all"): Promise<AppNewsItem[]> => {
   try {
+    console.log("Fetching news from API for category:", category);
+    
     // Map our app categories to NewsData.io query parameters
     const categoryQueries: Record<string, string> = {
       all: "crypto OR blockchain OR bitcoin OR ethereum",
@@ -99,24 +103,38 @@ export const fetchNewsFromApi = async (category: string = "all"): Promise<AppNew
       beginner: "crypto beginner OR \"blockchain explained\" OR \"crypto guide\"",
     };
     
+    // Special query for African crypto news
     const query = categoryQueries[category as keyof typeof categoryQueries] || categoryQueries.all;
     
+    // Focus on African countries: Nigeria, South Africa, Kenya, Ghana, Egypt
     const url = new URL("https://newsdata.io/api/1/news");
     url.searchParams.append("apikey", API_KEY);
     url.searchParams.append("q", query);
+    url.searchParams.append("country", "ng,za,ke,gh,eg");
     url.searchParams.append("language", "en");
+    
+    console.log("Fetching from URL:", url.toString());
     
     const response = await fetch(url.toString());
     
     if (!response.ok) {
+      console.error("API response not OK:", response.status);
       throw new Error(`Failed to fetch news: ${response.status}`);
     }
     
     const data: NewsDataResponse = await response.json();
+    console.log("API response status:", data.status);
     
     if (data.status !== "success") {
       throw new Error(`API returned error: ${data.status}`);
     }
+    
+    if (!data.results || data.results.length === 0) {
+      console.log("API returned empty results");
+      throw new Error("No news articles found");
+    }
+    
+    console.log(`Received ${data.results.length} articles from API`);
     
     return data.results.map(item => ({
       id: item.article_id,
@@ -137,3 +155,4 @@ export const fetchNewsFromApi = async (category: string = "all"): Promise<AppNew
     return [];
   }
 };
+

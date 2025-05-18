@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowRight, ExternalLink, RefreshCcw } from "lucide-react";
 import { fetchNews } from "@/services/news";
 import { AppNewsItem } from "@/services/newsDataApi";
 import { toast } from "@/hooks/use-toast";
@@ -22,27 +22,41 @@ const NewsSection = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [news, setNews] = useState<AppNewsItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const loadNews = async () => {
+    setLoading(true);
+    setError(null);
+    
+    try {
+      console.log(`Loading news for category: ${selectedCategory}`);
+      const newsData = await fetchNews(selectedCategory);
+      setNews(newsData);
+      console.log(`Loaded ${newsData.length} news items`);
+    } catch (error) {
+      console.error("Failed to fetch news:", error);
+      setError("We couldn't load the latest news. Please try again later.");
+      toast({
+        title: "Error loading news",
+        description: "We couldn't load the latest news. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const loadNews = async () => {
-      setLoading(true);
-      try {
-        const newsData = await fetchNews(selectedCategory);
-        setNews(newsData);
-      } catch (error) {
-        console.error("Failed to fetch news:", error);
-        toast({
-          title: "Error loading news",
-          description: "We couldn't load the latest news. Please try again later.",
-          variant: "destructive",
-        });
-      } finally {
-        setLoading(false);
-      }
-    };
-
     loadNews();
   }, [selectedCategory]);
+
+  const handleRefresh = () => {
+    loadNews();
+    toast({
+      title: "Refreshing news",
+      description: "Fetching the latest updates...",
+    });
+  };
 
   return (
     <motion.section
@@ -54,15 +68,48 @@ const NewsSection = () => {
       viewport={{ once: true }}
     >
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">News & Education</h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
-            Stay informed on the latest blockchain trends, security alerts, and educational content
-          </p>
+        <div className="flex justify-between items-center mb-12">
+          <div className="text-center md:text-left">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">News & Education</h2>
+            <p className="text-muted-foreground max-w-xl">
+              Stay informed on the latest blockchain trends, security alerts, and educational content focused on Africa
+            </p>
+          </div>
+          <Button 
+            variant="outline" 
+            size="icon" 
+            onClick={handleRefresh} 
+            disabled={loading}
+            className="hidden md:flex"
+            title="Refresh news"
+          >
+            <RefreshCcw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
+          </Button>
         </div>
         
         <Tabs defaultValue="all" value={selectedCategory} onValueChange={setSelectedCategory} className="w-full">
-          <TabsList className="mb-8 flex flex-wrap justify-center">
+          <div className="flex justify-between items-center md:hidden mb-4">
+            <TabsList className="flex flex-wrap justify-center">
+              {categories.map((category) => (
+                <TabsTrigger key={category.id} value={category.id} className="px-4 py-2">
+                  {category.label}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+            
+            <Button 
+              variant="outline" 
+              size="icon" 
+              onClick={handleRefresh} 
+              disabled={loading}
+              className="flex md:hidden ml-2"
+              title="Refresh news"
+            >
+              <RefreshCcw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
+            </Button>
+          </div>
+          
+          <TabsList className="mb-8 hidden md:flex flex-wrap justify-center">
             {categories.map((category) => (
               <TabsTrigger key={category.id} value={category.id} className="px-4 py-2">
                 {category.label}
@@ -71,21 +118,30 @@ const NewsSection = () => {
           </TabsList>
           
           <TabsContent value={selectedCategory} className="mt-0">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {loading ? (
-                Array(6).fill(0).map((_, i) => (
-                  <NewsCardSkeleton key={i} />
-                ))
-              ) : news.length > 0 ? (
-                news.map((item, index) => (
-                  <NewsCard key={item.id || index} article={item} delay={index * 0.1} />
-                ))
-              ) : (
-                <div className="col-span-full text-center py-12">
-                  <p className="text-muted-foreground">No news found for this category. Please try another category.</p>
-                </div>
-              )}
-            </div>
+            {error && !loading ? (
+              <div className="text-center py-12 border rounded-lg">
+                <p className="text-destructive mb-4">{error}</p>
+                <Button onClick={handleRefresh} variant="outline">
+                  Try again <RefreshCcw className="ml-2 h-4 w-4" />
+                </Button>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {loading ? (
+                  Array(6).fill(0).map((_, i) => (
+                    <NewsCardSkeleton key={i} />
+                  ))
+                ) : news.length > 0 ? (
+                  news.map((item, index) => (
+                    <NewsCard key={item.id || index} article={item} delay={index * 0.1} />
+                  ))
+                ) : (
+                  <div className="col-span-full text-center py-12">
+                    <p className="text-muted-foreground">No news found for this category. Please try another category.</p>
+                  </div>
+                )}
+              </div>
+            )}
           </TabsContent>
         </Tabs>
         
@@ -157,3 +213,4 @@ const NewsCardSkeleton = () => (
 );
 
 export default NewsSection;
+
