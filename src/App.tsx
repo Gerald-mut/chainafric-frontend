@@ -13,6 +13,7 @@ import ExplorePage from "./pages/ExplorePage";
 import DashboardPage from "./pages/DashboardPage";
 import AddressPage from "./pages/AddressPage";
 import TransactionPage from "./pages/TransactionPage";
+import AboutPage from "./pages/AboutPage";
 import NotFound from "./pages/NotFound";
 import ThemeProvider from "./providers/ThemeProvider";
 import { WalletProvider } from "./providers/WalletProvider";
@@ -37,6 +38,7 @@ const App: React.FC = () => {
                     <Route path="/dashboard" element={<DashboardPage />} />
                     <Route path="/address/:address" element={<AddressPage />} />
                     <Route path="/tx/:txHash" element={<TransactionPage />} />
+                    <Route path="/about" element={<AboutPage />} />
                     {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                     <Route path="*" element={<NotFound />} />
                   </Routes>
