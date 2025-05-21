@@ -33,7 +33,7 @@ const HeroSection = () => {
           Track any wallet across any chain — <span className="gradient-text">in your language</span>
         </h1>
         <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-          AfriTrack is a blockchain explorer reimagined for Africa and the global south — with cultural and linguistic accessibility at its core.
+          ChainAfric is a blockchain explorer reimagined for Africa and the global south — with cultural and linguistic accessibility at its core.
         </p>
 
         <motion.form 
