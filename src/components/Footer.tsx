@@ -6,7 +6,7 @@ import { useTranslation } from "@/utils/i18n";
 const Footer = () => {
   const { t } = useTranslation();
   return (
-    <footer className="bg-afri-dark border-t border-muted">
+    <footer className="bg-background border-t border-muted">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo and description */}
@@ -22,7 +22,7 @@ const Footer = () => {
                 href="https://github.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-white"
+                className="text-muted-foreground hover:text-foreground"
               >
                 <Github className="h-5 w-5" />
                 <span className="sr-only">GitHub</span>
@@ -37,17 +37,17 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/explore" className="text-muted-foreground hover:text-white">
+                <Link to="/explore" className="text-muted-foreground hover:text-foreground">
                   {t('blockchainData')}
                 </Link>
               </li>
               <li>
-                <Link to="/dashboard" className="text-muted-foreground hover:text-white">
+                <Link to="/dashboard" className="text-muted-foreground hover:text-foreground">
                   {t('dashboard')}
                 </Link>
               </li>
               <li>
-                <Link to="/api" className="text-muted-foreground hover:text-white">
+                <Link to="/api" className="text-muted-foreground hover:text-foreground">
                   {t('api')}
                 </Link>
               </li>
@@ -61,17 +61,17 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/about" className="text-muted-foreground hover:text-white">
+                <Link to="/about" className="text-muted-foreground hover:text-foreground">
                   {t('aboutUs')}
                 </Link>
               </li>
               <li>
-                <Link to="/privacy" className="text-muted-foreground hover:text-white">
+                <Link to="/privacy" className="text-muted-foreground hover:text-foreground">
                   {t('privacyPolicy')}
                 </Link>
               </li>
               <li>
-                <Link to="/terms" className="text-muted-foreground hover:text-white">
+                <Link to="/terms" className="text-muted-foreground hover:text-foreground">
                   {t('termsOfService')}
                 </Link>
               </li>
