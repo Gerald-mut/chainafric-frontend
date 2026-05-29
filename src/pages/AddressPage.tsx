@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -7,19 +6,21 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowUpRight, Wallet, Image, History } from "lucide-react";
+import { useTranslation } from "@/utils/i18n";
 
 const AddressPage = () => {
   const { address } = useParams<{ address: string }>();
   const { data, isLoading, error } = useWallet(address);
   const [activeTab, setActiveTab] = useState("overview");
+  const { t } = useTranslation();
 
   if (error) {
     return (
       <div className="min-h-[80vh] flex items-center justify-center">
         <Card className="w-full max-w-md glass-card">
           <CardHeader>
-            <CardTitle>Error</CardTitle>
-            <CardDescription>Failed to load wallet data</CardDescription>
+            <CardTitle>{t('error')}</CardTitle>
+            <CardDescription>{t('failedLoadWallet')}</CardDescription>
           </CardHeader>
           <CardContent>
             <p className="text-destructive">{error.message}</p>
@@ -37,7 +38,7 @@ const AddressPage = () => {
         transition={{ duration: 0.5 }}
       >
         <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">Wallet Details</h1>
+          <h1 className="text-3xl font-bold mb-2">{t('walletDetails')}</h1>
           <div className="flex items-center space-x-2 text-muted-foreground">
             <Wallet className="h-4 w-4" />
             <span className="font-mono">{address}</span>
@@ -55,36 +56,36 @@ const AddressPage = () => {
           className="w-full"
         >
           <TabsList className="bg-afri-dark border border-muted grid grid-cols-3 md:grid-cols-4 lg:w-[400px]">
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="tokens">Tokens</TabsTrigger>
-            <TabsTrigger value="nfts">NFTs</TabsTrigger>
-            <TabsTrigger value="transactions">Transactions</TabsTrigger>
+            <TabsTrigger value="overview">{t('overview')}</TabsTrigger>
+            <TabsTrigger value="tokens">{t('tokens')}</TabsTrigger>
+            <TabsTrigger value="nfts">{t('nfts')}</TabsTrigger>
+            <TabsTrigger value="transactions">{t('transactions')}</TabsTrigger>
           </TabsList>
 
           <div className="mt-6">
             <TabsContent value="overview" className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {/* Balance Card */}
-                <OverviewCard isLoading={isLoading} data={data} />
+                <OverviewCard isLoading={isLoading} data={data} t={t} />
                 
                 {/* Recent Activity Card */}
-                <ActivityCard isLoading={isLoading} data={data} />
+                <ActivityCard isLoading={isLoading} data={data} t={t} />
                 
                 {/* NFT Preview Card */}
-                <NFTPreviewCard isLoading={isLoading} data={data} />
+                <NFTPreviewCard isLoading={isLoading} data={data} t={t} />
               </div>
             </TabsContent>
 
             <TabsContent value="tokens">
-              <TokensTab isLoading={isLoading} data={data} />
+              <TokensTab isLoading={isLoading} data={data} t={t} />
             </TabsContent>
 
             <TabsContent value="nfts">
-              <NFTsTab isLoading={isLoading} data={data} />
+              <NFTsTab isLoading={isLoading} data={data} t={t} />
             </TabsContent>
 
             <TabsContent value="transactions">
-              <TransactionsTab isLoading={isLoading} data={data} />
+              <TransactionsTab isLoading={isLoading} data={data} t={t} />
             </TabsContent>
           </div>
         </Tabs>
@@ -93,11 +94,11 @@ const AddressPage = () => {
   );
 };
 
-const OverviewCard = ({ isLoading, data }: { isLoading: boolean; data: any }) => (
+const OverviewCard = ({ isLoading, data, t }: { isLoading: boolean; data: any; t: any }) => (
   <Card className="glass-card">
     <CardHeader>
-      <CardTitle>Balance</CardTitle>
-      <CardDescription>Across multiple chains</CardDescription>
+      <CardTitle>{t('balance')}</CardTitle>
+      <CardDescription>{t('acrossChains')}</CardDescription>
     </CardHeader>
     <CardContent className="space-y-4">
       {isLoading ? (
@@ -112,8 +113,8 @@ const OverviewCard = ({ isLoading, data }: { isLoading: boolean; data: any }) =>
         </>
       ) : (
         <>
-          <div className="text-sm text-muted-foreground">Total Value</div>
-          <div className="text-3xl font-bold">$2,050.54</div>
+          <div className="text-sm text-muted-foreground">{t('mainnetEthBalance')}</div>
+          <div className="text-3xl font-bold">{data?.balance?.eth ? `${data.balance.eth} ETH` : '0.00 ETH'}</div>
           <div className="space-y-2 mt-4">
             {data?.balance && Object.entries(data.balance).map(([chain, amount]: [string, any]) => (
               <div key={chain} className="flex justify-between">
@@ -128,11 +129,11 @@ const OverviewCard = ({ isLoading, data }: { isLoading: boolean; data: any }) =>
   </Card>
 );
 
-const ActivityCard = ({ isLoading, data }: { isLoading: boolean; data: any }) => (
+const ActivityCard = ({ isLoading, data, t }: { isLoading: boolean; data: any; t: any }) => (
   <Card className="glass-card">
     <CardHeader>
-      <CardTitle>Recent Activity</CardTitle>
-      <CardDescription>Latest blockchain transactions</CardDescription>
+      <CardTitle>{t('recentActivity')}</CardTitle>
+      <CardDescription>{t('latestTransactions')}</CardDescription>
     </CardHeader>
     <CardContent>
       {isLoading ? (
@@ -162,11 +163,11 @@ const ActivityCard = ({ isLoading, data }: { isLoading: boolean; data: any }) =>
   </Card>
 );
 
-const NFTPreviewCard = ({ isLoading, data }: { isLoading: boolean; data: any }) => (
+const NFTPreviewCard = ({ isLoading, data, t }: { isLoading: boolean; data: any; t: any }) => (
   <Card className="glass-card">
     <CardHeader>
-      <CardTitle>NFTs</CardTitle>
-      <CardDescription>Digital collectibles</CardDescription>
+      <CardTitle>{t('nfts')}</CardTitle>
+      <CardDescription>{t('digitalCollectibles')}</CardDescription>
     </CardHeader>
     <CardContent>
       {isLoading ? (
@@ -197,11 +198,11 @@ const NFTPreviewCard = ({ isLoading, data }: { isLoading: boolean; data: any }) 
   </Card>
 );
 
-const TokensTab = ({ isLoading, data }: { isLoading: boolean; data: any }) => (
+const TokensTab = ({ isLoading, data, t }: { isLoading: boolean; data: any; t: any }) => (
   <Card className="glass-card">
     <CardHeader>
-      <CardTitle>Token Holdings</CardTitle>
-      <CardDescription>ERC-20 tokens across chains</CardDescription>
+      <CardTitle>{t('tokenHoldings')}</CardTitle>
+      <CardDescription>{t('erc20Tokens')}</CardDescription>
     </CardHeader>
     <CardContent>
       {isLoading ? (
@@ -213,9 +214,9 @@ const TokensTab = ({ isLoading, data }: { isLoading: boolean; data: any }) => (
       ) : (
         <div className="space-y-1">
           <div className="grid grid-cols-3 text-xs text-muted-foreground py-2 border-b border-muted">
-            <div>Token</div>
-            <div className="text-right">Balance</div>
-            <div className="text-right">Value (USD)</div>
+            <div>{t('token')}</div>
+            <div className="text-right">{t('balance')}</div>
+            <div className="text-right">{t('valueUsd')}</div>
           </div>
           {data?.tokens?.map((token: any, i: number) => (
             <div key={i} className="grid grid-cols-3 py-3 border-b border-muted last:border-0">
@@ -230,11 +231,11 @@ const TokensTab = ({ isLoading, data }: { isLoading: boolean; data: any }) => (
   </Card>
 );
 
-const NFTsTab = ({ isLoading, data }: { isLoading: boolean; data: any }) => (
+const NFTsTab = ({ isLoading, data, t }: { isLoading: boolean; data: any; t: any }) => (
   <Card className="glass-card">
     <CardHeader>
-      <CardTitle>NFT Collection</CardTitle>
-      <CardDescription>ERC-721 and ERC-1155 tokens</CardDescription>
+      <CardTitle>{t('nftCollection')}</CardTitle>
+      <CardDescription>{t('erc721Tokens')}</CardDescription>
     </CardHeader>
     <CardContent>
       {isLoading ? (
@@ -267,11 +268,11 @@ const NFTsTab = ({ isLoading, data }: { isLoading: boolean; data: any }) => (
   </Card>
 );
 
-const TransactionsTab = ({ isLoading, data }: { isLoading: boolean; data: any }) => (
+const TransactionsTab = ({ isLoading, data, t }: { isLoading: boolean; data: any; t: any }) => (
   <Card className="glass-card">
     <CardHeader>
-      <CardTitle>Transaction History</CardTitle>
-      <CardDescription>Recent on-chain activity</CardDescription>
+      <CardTitle>{t('transactionHistory')}</CardTitle>
+      <CardDescription>{t('recentOnChain')}</CardDescription>
     </CardHeader>
     <CardContent>
       {isLoading ? (
@@ -283,10 +284,10 @@ const TransactionsTab = ({ isLoading, data }: { isLoading: boolean; data: any })
       ) : (
         <div className="space-y-1">
           <div className="grid grid-cols-4 text-xs text-muted-foreground py-2 border-b border-muted">
-            <div>Transaction</div>
-            <div>Type</div>
-            <div>Value</div>
-            <div className="text-right">Time</div>
+            <div>{t('transaction')}</div>
+            <div>{t('type')}</div>
+            <div>{t('value')}</div>
+            <div className="text-right">{t('time')}</div>
           </div>
           {data?.transactions?.map((tx: any, i: number) => (
             <div key={i} className="grid grid-cols-4 py-3 border-b border-muted last:border-0">

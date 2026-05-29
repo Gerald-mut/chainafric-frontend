@@ -1,5 +1,4 @@
-
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -9,20 +8,22 @@ import { ArrowRight, ExternalLink, RefreshCcw } from "lucide-react";
 import { fetchNews } from "@/services/news";
 import { AppNewsItem } from "@/services/newsDataApi";
 import { toast } from "@/hooks/use-toast";
-
-const categories = [
-  { id: "all", label: "All" },
-  { id: "nfts", label: "NFTs" },
-  { id: "defi", label: "DeFi" },
-  { id: "scams", label: "Security Alerts" },
-  { id: "beginner", label: "Learn" },
-];
+import { useTranslation } from "@/utils/i18n";
 
 const NewsSection = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [news, setNews] = useState<AppNewsItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { t } = useTranslation();
+
+  const categories = useMemo(() => [
+    { id: "all", label: t('all') },
+    { id: "nfts", label: t('nftsTab') },
+    { id: "defi", label: t('defi') },
+    { id: "scams", label: t('securityAlerts') },
+    { id: "beginner", label: t('learn') },
+  ], [t]);
 
   const loadNews = async () => {
     setLoading(true);
@@ -70,9 +71,9 @@ const NewsSection = () => {
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center mb-12">
           <div className="text-center md:text-left">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">News & Education</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">{t('newsTitle')}</h2>
             <p className="text-muted-foreground max-w-xl">
-              Stay informed on the latest blockchain trends, security alerts, and educational content focused on Africa
+              {t('newsSubtitle')}
             </p>
           </div>
           <Button 
@@ -81,7 +82,7 @@ const NewsSection = () => {
             onClick={handleRefresh} 
             disabled={loading}
             className="hidden md:flex"
-            title="Refresh news"
+            title={t('refreshNews')}
           >
             <RefreshCcw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
           </Button>
@@ -103,7 +104,7 @@ const NewsSection = () => {
               onClick={handleRefresh} 
               disabled={loading}
               className="flex md:hidden ml-2"
-              title="Refresh news"
+              title={t('refreshNews')}
             >
               <RefreshCcw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
             </Button>
@@ -122,7 +123,7 @@ const NewsSection = () => {
               <div className="text-center py-12 border rounded-lg">
                 <p className="text-destructive mb-4">{error}</p>
                 <Button onClick={handleRefresh} variant="outline">
-                  Try again <RefreshCcw className="ml-2 h-4 w-4" />
+                  {t('tryAgain')} <RefreshCcw className="ml-2 h-4 w-4" />
                 </Button>
               </div>
             ) : (
@@ -133,11 +134,11 @@ const NewsSection = () => {
                   ))
                 ) : news.length > 0 ? (
                   news.map((item, index) => (
-                    <NewsCard key={item.id || index} article={item} delay={index * 0.1} />
+                    <NewsCard key={item.id || index} article={item} delay={index * 0.1} t={t} />
                   ))
                 ) : (
                   <div className="col-span-full text-center py-12">
-                    <p className="text-muted-foreground">No news found for this category. Please try another category.</p>
+                    <p className="text-muted-foreground">{t('noNewsFound')}</p>
                   </div>
                 )}
               </div>
@@ -147,7 +148,7 @@ const NewsSection = () => {
         
         <div className="text-center mt-12">
           <Button variant="outline" size="lg" className="group">
-            View all articles 
+            {t('viewAllArticles')} 
             <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
@@ -156,7 +157,7 @@ const NewsSection = () => {
   );
 };
 
-const NewsCard = ({ article, delay }: { article: AppNewsItem, delay: number }) => (
+const NewsCard = ({ article, delay, t }: { article: AppNewsItem, delay: number, t: any }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
@@ -185,7 +186,7 @@ const NewsCard = ({ article, delay }: { article: AppNewsItem, delay: number }) =
       <CardFooter>
         <a href={article.url} target="_blank" rel="noopener noreferrer" className="w-full">
           <Button variant="ghost" className="group mt-auto w-full justify-start p-0 hover:bg-transparent">
-            Read more
+            {t('readMore')}
             <ExternalLink className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </Button>
         </a>

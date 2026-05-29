@@ -1,4 +1,141 @@
+// Amharic translations
+export default {
+  // About page
+  aboutUs: "ስለ እኛ",
+  welcomeText: "እንኳን ወደ AfriTrack በደህና መጡ — በኤቲሪየም ዓለም ውስጥ ለዲጂታል ባለቤትነት የእርስዎ ሁሉን አቀፍ ዳሽቦርድ።",
+  descriptionText: "AfriTrack በብሎክቼይን ላይ ሙሉ ታይነትን ለመስጠት የተቀየሰ ባለብዙ ደረጃ ንብረት መከታተያ ስርዓት ነው።",
+  ourMission: "ተልእኳችን",
+  missionText: "የክሪፕቶ ባለቤትነትን ግልጽ፣ ተደራሽ እና ለመረዳት ቀላል ማድረግ።",
+  whatWeDo: "ምን እንደምናደርግ",
+  unifiedWalletTitle: "የተዋሃደ የኪስ ቦርሳ እይታ",
+  unifiedWalletDesc: "በኤቲሪየም እና በሌሎች ሰንሰለቶች ላይ ያሉዎትን ነገሮች ሁሉ ይከታተሉ።",
+  multiStandardTitle: "ባለብዙ-ደረጃ ድጋፍ",
+  multiStandardDesc: "ERC-20s, ERC-721s, ERC-1155s.",
+  marketFeedsTitle: "የቀጥታ ገበያ ዜና",
+  marketFeedsDesc: "አዳዲስ የክሪፕቶ ዜናዎችን ያግኙ።",
+  addressIntelTitle: "የአድራሻ ግንዛቤ",
+  addressIntelDesc: "ለግንዛቤዎች ብዙ አድራሻዎችን ያገናኙ።",
+  whyAfriTrack: "ለምን AfriTrack?",
+  whyText: "ምክንያቱም በክሪፕቶ ውስጥ ባለቤትነት ድንበር የለውም።",
+  builtForNextBillion: "ለቀጣዩ ቢሊዮን የተሰራ",
+  builtText: "AfriTrack በአፍሪካ ታስቦ በኩራት የተገነባ ነው።",
+  
+  // Nav items
+  home: "መነሻ",
+  explore: "ያስሱ",
+  dashboard: "ዳሽቦርድ",
+  
+  // Actions
+  connect: "አገናኝ",
+  search: "ፈልግ",
+  searchPlaceholder: "የኪስ ቦርሳ አድራሻ፣ የENS ስም ወይም የግብይት ሃሽ ያስገቡ...",
+  
+  // Other common phrases
+  selectLanguage: "ቋንቋ ይምረጡ",
 
-// Amharic translations (placeholder - using English for now)
-import en from './en';
-export default en;
+  // Hero Section
+  heroTitle: "በማንኛውም ሰንሰለት ላይ ማንኛውንም ቦርሳ ይከታተሉ —",
+  heroTitleHighlight: "በእርስዎ ቋንቋ",
+  heroSubtitle: "AfriTrack ለአፍሪካ እንደገና የታሰበ የብሎክቼይን አሳሽ ነው።",
+  exploreFeatures: "ተጨማሪ ባህሪያትን ያስሱ",
+  
+  // Address Page
+  walletDetails: "የኪስ ቦርሳ ዝርዝሮች",
+  error: "ስህተት",
+  failedLoadWallet: "የኪስ ቦርሳ መረጃ መጫን አልተሳካም",
+  overview: "አጠቃላይ እይታ",
+  tokens: "ቶከኖች",
+  nfts: "NFTs",
+  transactions: "ግብይቶች",
+  balance: "ቀሪ ሂሳብ",
+  acrossChains: "በበርካታ ሰንሰለቶች",
+  mainnetEthBalance: "የMainnet ETH ቀሪ ሂሳብ",
+  recentActivity: "የቅርብ ጊዜ እንቅስቃሴ",
+  latestTransactions: "የቅርብ ጊዜ የብሎክቼይን ግብይቶች",
+  digitalCollectibles: "ዲጂታል ስብስቦች",
+  tokenHoldings: "የቶከን ይዞታዎች",
+  erc20Tokens: "የERC-20 ቶከኖች",
+  token: "ቶከን",
+  valueUsd: "ዋጋ (USD)",
+  nftCollection: "የNFT ስብስብ",
+  erc721Tokens: "የERC-721 እና ERC-1155 ቶከኖች",
+  transactionHistory: "የግብይት ታሪክ",
+  recentOnChain: "የቅርብ ጊዜ የሰንሰለት ላይ እንቅስቃሴ",
+  transaction: "ግብይት",
+  type: "ዓይነት",
+  value: "ዋጋ",
+  time: "ሰዓት",
+
+  // Transaction Page
+  transactionDetails: "የግብይት ዝርዝሮች",
+  failedLoadTx: "የግብይት መረጃ መጫን አልተሳካም",
+  transactionOverview: "የግብይት አጠቃላይ እይታ",
+  keyTxInfo: "ቁልፍ የግብይት መረጃ",
+  txHash: "የግብይት ሃሽ",
+  block: "ብሎክ",
+  timestamp: "የጊዜ ማህተም",
+  from: "ከ",
+  to: "ወደ",
+  transactionFee: "የግብይት ክፍያ",
+  gasPrice: "የጋዝ ዋጋ",
+  contractInteraction: "የውል መስተጋብር",
+  contractMethodCalled: "የውል ዘዴ ዝርዝሮች",
+  contract: "ውል",
+  function: "ተግባር",
+  arguments: "ክርክሮች (Arguments)",
+  eventLogs: "የክስተት ምዝግብ ማስታወሻዎች",
+  eventsEmitted: "በዚህ ግብይት ወቅት የወጡ ክስተቶች",
+  fromContract: "ከውል",
+
+  // News Section
+  newsTitle: "ዜና እና ትምህርት",
+  newsSubtitle: "በአፍሪካ ውስጥ ባሉ አዳዲስ የብሎክቼይን አዝማሚያዎች ላይ መረጃ ያግኙ",
+  refreshNews: "ዜናን ያድሱ",
+  tryAgain: "እንደገና ይሞክሩ",
+  noNewsFound: "ለዚህ ምድብ ምንም ዜና አልተገኘም።",
+  viewAllArticles: "ሁሉንም መጣጥፎች ይመልከቱ",
+  readMore: "ተጨማሪ ያንብቡ",
+  
+  // Categories
+  all: "ሁሉም",
+  nftsTab: "NFTs",
+  defi: "DeFi",
+  securityAlerts: "የደህንነት ማንቂያዎች",
+  learn: "ተማር",
+
+  // Footer
+  footerDesc: "ለአፍሪካ እንደገና የታሰበ የብሎክቼይን አሳሽ — ባህላዊ እና ቋንቋዊ ተደራሽነትን ያካተተ።",
+  blockchainData: "የብሎክቼይን መረጃ",
+  api: "API",
+  about: "ስለ",
+  privacyPolicy: "የግላዊነት መመሪያ",
+  termsOfService: "የአገልግሎት ውሎች",
+  allRightsReserved: "መብቱ በህግ የተጠበቀ ነው።",
+
+  // Explore Page
+  exploreBlockchainData: "የብሎክቼይን ውሂብን ያስሱ",
+  discoverInsights: "በበርካታ ሰንሰለቶች ላይ ግንዛቤዎችን ያግኙ።",
+  multiChainAnalytics: "ባለብዙ ሰንሰለት ትንታኔ",
+  trackAssets: "ንብረቶችን ይከታተሉ።",
+  walletPortfolio: "የኪስ ቦርሳ ፖርትፎሊዮ",
+  viewTokenBalances: "የቶከን ሂሳቦችን ይመልከቱ።",
+  languageAccessibility: "የቋንቋ ተደራሽነት",
+  accessBlockchain: "በአፍሪካ ቋንቋዎች ብሎክቼይንን ይድረሱ።",
+  contractAnalysis: "የውል ትንተና",
+  aiPoweredContract: "በAI የተጎለበተ የውል ትንተና።",
+  nftGalleryTitle: "የNFT ማዕከለ-ስዕላት",
+  exploreNftCollections: "የNFT ስብስቦችን ያስሱ።",
+  airdropTracking: "የAirdrop ክትትል",
+  neverMissAirdrop: "አየር ዳሮፕን አያምልጥዎ።",
+  learnMore: "ተጨማሪ ይማሩ",
+
+  // Dashboard Page
+  yourDashboard: "የእርስዎ ዳሽቦርድ",
+  connectToTrack: "ንብረቶችን ለመከታተል ያገናኙ።",
+  connectYourWallet: "የኪስ ቦርሳዎን ያገናኙ",
+  connectWeb3Wallet: "የWeb3 ቦርሳዎን ያገናኙ",
+  connectToViewTokens: "ቶከኖችዎን ለማየት ያገናኙ።",
+  walletConnected: "የኪስ ቦርሳ ተገናኝቷል",
+  totalBalance: "ጠቅላላ ቀሪ ሂሳብ",
+  recentTransactionsTitle: "የቅርብ ጊዜ ግብይቶች",
+};

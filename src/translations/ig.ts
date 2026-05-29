@@ -1,4 +1,141 @@
+// Igbo translations
+export default {
+  // About page
+  aboutUs: "Gbasara Anyị",
+  welcomeText: "Nnọọ na AfriTrack — bọọdụ ngosi gị maka ikike dijitalụ n'ime ụwa Ethereum.",
+  descriptionText: "AfriTrack bụ usoro nsochi akụ nwere ọtụtụ ọkọlọtọ emere iji nye gị ọhụhụ zuru oke na blockchain.",
+  ourMission: "Ebumnuche Anyị",
+  missionText: "Ime ka inwe crypto pụta ìhè, dị mfe ịnweta, ma nwee nghọta.",
+  whatWeDo: "Ihe Anyị Na-eme",
+  unifiedWalletTitle: "Nchịkọta obere akpa (Wallet)",
+  unifiedWalletDesc: "Soro ihe niile ị nwere na Ethereum yana agbụ ndị ọzọ.",
+  multiStandardTitle: "Nkwado Ọtụtụ Ọkọlọtọ",
+  multiStandardDesc: "ERC-20s, ERC-721s, ERC-1155s.",
+  marketFeedsTitle: "Akụkọ Ahịa Dị Ndụ",
+  marketFeedsDesc: "Nweta akụkọ crypto kachasị ọhụrụ.",
+  addressIntelTitle: "Ọgụgụ Isi Adreesị",
+  addressIntelDesc: "Jikọọ ọtụtụ adreesị maka nghọta.",
+  whyAfriTrack: "Kedu ihe kpatara AfriTrack?",
+  whyText: "N'ihi na inwe na crypto enweghị oke.",
+  builtForNextBillion: "Ewuru maka ijeri na-abịa",
+  builtText: "Ejiri nganga wuo AfriTrack na Africa n'uche.",
+  
+  // Nav items
+  home: "Ụlọ",
+  explore: "Inyocha",
+  dashboard: "Bọọdụ",
+  
+  // Actions
+  connect: "Jikọọ",
+  search: "Chọọ",
+  searchPlaceholder: "Tinye adreesị obere akpa, aha ENS, ma ọ bụ hash azụmahịa...",
+  
+  // Other common phrases
+  selectLanguage: "Họrọ Asụsụ",
 
-// Igbo translations (placeholder - using English for now)
-import en from './en';
-export default en;
+  // Hero Section
+  heroTitle: "Soro obere akpa ọ bụla n'agbụ ọ bụla —",
+  heroTitleHighlight: "n'asụsụ gị",
+  heroSubtitle: "AfriTrack bụ onye na-enyocha blockchain arụgharịrị maka Africa — nwere ohere ọdịnala na asụsụ.",
+  exploreFeatures: "Chọpụta atụmatụ ndị ọzọ",
+  
+  // Address Page
+  walletDetails: "Nkọwa obere akpa",
+  error: "Njehie",
+  failedLoadWallet: "Emeghị ibunye data obere akpa",
+  overview: "Nchịkọta",
+  tokens: "Tokens",
+  nfts: "NFTs",
+  transactions: "Azụmahịa",
+  balance: "Nhazi",
+  acrossChains: "N'ofe otutu agbụ",
+  mainnetEthBalance: "Mainnet ETH Nhazi",
+  recentActivity: "Ọrụ na-adịbeghị anya",
+  latestTransactions: "Azụmahịa blockchain ọhụrụ",
+  digitalCollectibles: "Mkpokọta dijitalụ",
+  tokenHoldings: "Njide Token",
+  erc20Tokens: "Ihe nrite ERC-20",
+  token: "Token",
+  valueUsd: "Uru (USD)",
+  nftCollection: "Nchịkọta NFT",
+  erc721Tokens: "Akara ERC-721 na ERC-1155",
+  transactionHistory: "Akụkọ azụmahịa",
+  recentOnChain: "Ọrụ na-adịbeghị anya n'agbụ",
+  transaction: "Azụmahịa",
+  type: "Ụdị",
+  value: "Uru",
+  time: "Oge",
+
+  // Transaction Page
+  transactionDetails: "Nkọwa azụmahịa",
+  failedLoadTx: "Emeghị ibu data azụmahịa",
+  transactionOverview: "Nchịkọta azụmahịa",
+  keyTxInfo: "Ozi azụmahịa igodo",
+  txHash: "Hash azụmahịa",
+  block: "Gbochie (Block)",
+  timestamp: "Mpempe oge",
+  from: "Site na",
+  to: "Gaa na",
+  transactionFee: "Ụgwọ azụmahịa",
+  gasPrice: "Ọnụ gas",
+  contractInteraction: "Mmekọrịta nkwekọrịta",
+  contractMethodCalled: "Nkọwa usoro nkwekọrịta",
+  contract: "Nkwekọrịta",
+  function: "Ọrụ",
+  arguments: "Arụmụka",
+  eventLogs: "Ndekọ mmemme",
+  eventsEmitted: "Ihe omume emepụtara n'oge azụmahịa a",
+  fromContract: "Site na nkwekọrịta",
+
+  // News Section
+  newsTitle: "Ozi na Agụmakwụkwọ",
+  newsSubtitle: "Nọrọ na-amakwa maka usoro blockchain kachasị ọhụrụ n'Africa",
+  refreshNews: "Mee ka akụkọ dị ọhụrụ",
+  tryAgain: "Gbalịa ọzọ",
+  noNewsFound: "O nweghị akụkọ achọtara maka udi a.",
+  viewAllArticles: "Lelee akụkọ niile",
+  readMore: "Gụkwuo",
+  
+  // Categories
+  all: "Niile",
+  nftsTab: "NFTs",
+  defi: "DeFi",
+  securityAlerts: "Nkwupụta Nchebe",
+  learn: "Mụta",
+
+  // Footer
+  footerDesc: "Onye na-enyocha blockchain arụgharịrị maka Africa — nwere ohere ọdịnala na asụsụ.",
+  blockchainData: "Data Blockchain",
+  api: "API",
+  about: "Gbasara",
+  privacyPolicy: "Iwu nzuzo",
+  termsOfService: "Usoro Ọrụ",
+  allRightsReserved: "Ikike niile echekwabara.",
+
+  // Explore Page
+  exploreBlockchainData: "Nyochaa Blockchain Data",
+  discoverInsights: "Chọpụta nghọta na ọtụtụ agbụ n'asụsụ gị.",
+  multiChainAnalytics: "Nyochaa Ọtụtụ-Chain",
+  trackAssets: "Soro akụ na azụmahịa.",
+  walletPortfolio: "Akpa Wallet",
+  viewTokenBalances: "Lelee itule token, wdg.",
+  languageAccessibility: "Inweta Asụsụ",
+  accessBlockchain: "Nweta data blockchain na asụsụ Africa.",
+  contractAnalysis: "Nyocha Nkwekọrịta",
+  aiPoweredContract: "Nkwekọrịta AI.",
+  nftGalleryTitle: "Osisi NFT",
+  exploreNftCollections: "Chọpụta mkpokọta NFT.",
+  airdropTracking: "Nyochaa Airdrop",
+  neverMissAirdrop: "Echefula airdrop.",
+  learnMore: "Mụtakwuo",
+
+  // Dashboard Page
+  yourDashboard: "Dashboard gị",
+  connectToTrack: "Jikọọ obere akpa gị iji soro akụ gị",
+  connectYourWallet: "Jikọọ obere akpa gị",
+  connectWeb3Wallet: "Jikọọ obere akpa Web3 gị",
+  connectToViewTokens: "Jikọọ obere akpa gị iji hụ token gị",
+  walletConnected: "Ejikọtara obere akpa",
+  totalBalance: "Ngụkọta",
+  recentTransactionsTitle: "Azụmahịa na-adịbeghị anya",
+};

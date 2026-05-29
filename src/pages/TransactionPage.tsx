@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -7,12 +6,14 @@ import { fetchTransactionData } from "@/services/blockchain";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowUpRight, ArrowDownRight, CheckCircle2, Clock, AlertCircle } from "lucide-react";
+import { useTranslation } from "@/utils/i18n";
 
 const TransactionPage = () => {
   const { txHash } = useParams<{ txHash: string }>();
   const [transaction, setTransaction] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const loadTransactionData = async () => {
@@ -22,7 +23,7 @@ const TransactionPage = () => {
         const data = await fetchTransactionData(txHash);
         setTransaction(data);
       } catch (err) {
-        setError("Failed to load transaction data. Please try again.");
+        setError(t('failedLoadTx'));
         console.error(err);
       } finally {
         setLoading(false);
@@ -30,7 +31,7 @@ const TransactionPage = () => {
     };
 
     loadTransactionData();
-  }, [txHash]);
+  }, [txHash, t]);
 
   const renderStatusIcon = (status: string) => {
     switch (status.toLowerCase()) {
@@ -54,7 +55,7 @@ const TransactionPage = () => {
           transition={{ duration: 0.5 }}
         >
           <div className="mb-8">
-            <h1 className="text-3xl font-bold mb-2">Transaction Details</h1>
+            <h1 className="text-3xl font-bold mb-2">{t('transactionDetails')}</h1>
             <div className="flex items-center space-x-2 text-muted-foreground">
               <span className="font-mono break-all">{txHash}</span>
             </div>
@@ -63,8 +64,8 @@ const TransactionPage = () => {
           {error ? (
             <Card className="w-full glass-card">
               <CardHeader>
-                <CardTitle>Error</CardTitle>
-                <CardDescription>Failed to load transaction data</CardDescription>
+                <CardTitle>{t('error')}</CardTitle>
+                <CardDescription>{t('failedLoadTx')}</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-destructive">{error}</p>
@@ -77,8 +78,8 @@ const TransactionPage = () => {
               <Card className="glass-card">
                 <CardHeader className="flex flex-row items-center justify-between">
                   <div>
-                    <CardTitle>Transaction Overview</CardTitle>
-                    <CardDescription>Key transaction information</CardDescription>
+                    <CardTitle>{t('transactionOverview')}</CardTitle>
+                    <CardDescription>{t('keyTxInfo')}</CardDescription>
                   </div>
                   <div className="flex items-center space-x-2">
                     {renderStatusIcon(transaction.status)}
@@ -95,21 +96,21 @@ const TransactionPage = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-3">
                       <div>
-                        <div className="text-sm text-muted-foreground">Transaction Hash</div>
+                        <div className="text-sm text-muted-foreground">{t('txHash')}</div>
                         <div className="font-mono text-sm break-all">{transaction.hash}</div>
                       </div>
                       <div>
-                        <div className="text-sm text-muted-foreground">Block</div>
+                        <div className="text-sm text-muted-foreground">{t('block')}</div>
                         <div>{transaction.blockNumber}</div>
                       </div>
                       <div>
-                        <div className="text-sm text-muted-foreground">Timestamp</div>
+                        <div className="text-sm text-muted-foreground">{t('timestamp')}</div>
                         <div>{transaction.timestamp}</div>
                       </div>
                     </div>
                     <div className="space-y-3">
                       <div>
-                        <div className="text-sm text-muted-foreground">From</div>
+                        <div className="text-sm text-muted-foreground">{t('from')}</div>
                         <div className="font-mono text-sm break-all">{transaction.from}</div>
                       </div>
                       <div className="flex items-start space-x-2">
@@ -121,7 +122,7 @@ const TransactionPage = () => {
                           )}
                         </div>
                         <div className="flex-1">
-                          <div className="text-sm text-muted-foreground">To</div>
+                          <div className="text-sm text-muted-foreground">{t('to')}</div>
                           <div className="font-mono text-sm break-all">{transaction.to}</div>
                         </div>
                       </div>
@@ -131,15 +132,15 @@ const TransactionPage = () => {
                   <div className="pt-4 border-t border-muted">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       <div>
-                        <div className="text-sm text-muted-foreground">Value</div>
+                        <div className="text-sm text-muted-foreground">{t('value')}</div>
                         <div className="text-lg font-semibold">{transaction.value} {transaction.symbol}</div>
                       </div>
                       <div>
-                        <div className="text-sm text-muted-foreground">Transaction Fee</div>
+                        <div className="text-sm text-muted-foreground">{t('transactionFee')}</div>
                         <div>{transaction.fee} {transaction.nativeSymbol}</div>
                       </div>
                       <div>
-                        <div className="text-sm text-muted-foreground">Gas Price</div>
+                        <div className="text-sm text-muted-foreground">{t('gasPrice')}</div>
                         <div>{transaction.gasPrice} Gwei</div>
                       </div>
                     </div>
@@ -150,21 +151,21 @@ const TransactionPage = () => {
               {transaction.contractInteraction && (
                 <Card className="glass-card">
                   <CardHeader>
-                    <CardTitle>Contract Interaction</CardTitle>
-                    <CardDescription>Details of the contract method called</CardDescription>
+                    <CardTitle>{t('contractInteraction')}</CardTitle>
+                    <CardDescription>{t('contractMethodCalled')}</CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div>
-                      <div className="text-sm text-muted-foreground">Contract</div>
+                      <div className="text-sm text-muted-foreground">{t('contract')}</div>
                       <div className="font-mono text-sm break-all">{transaction.contractAddress}</div>
                     </div>
                     <div>
-                      <div className="text-sm text-muted-foreground">Function</div>
+                      <div className="text-sm text-muted-foreground">{t('function')}</div>
                       <div className="font-mono bg-muted p-2 rounded-md text-sm">{transaction.method}</div>
                     </div>
                     {transaction.arguments && (
                       <div>
-                        <div className="text-sm text-muted-foreground">Arguments</div>
+                        <div className="text-sm text-muted-foreground">{t('arguments')}</div>
                         <pre className="bg-muted p-2 rounded-md text-xs overflow-x-auto">
                           {JSON.stringify(transaction.arguments, null, 2)}
                         </pre>
@@ -177,15 +178,15 @@ const TransactionPage = () => {
               {transaction.logs && transaction.logs.length > 0 && (
                 <Card className="glass-card">
                   <CardHeader>
-                    <CardTitle>Event Logs</CardTitle>
-                    <CardDescription>Events emitted during this transaction</CardDescription>
+                    <CardTitle>{t('eventLogs')}</CardTitle>
+                    <CardDescription>{t('eventsEmitted')}</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
                       {transaction.logs.map((log: any, index: number) => (
                         <div key={index} className="p-3 bg-muted rounded-md">
                           <div className="font-medium mb-1">{log.event}</div>
-                          <div className="text-sm text-muted-foreground">From contract: {log.address}</div>
+                          <div className="text-sm text-muted-foreground">{t('fromContract')}: {log.address}</div>
                           <pre className="mt-2 text-xs overflow-x-auto">
                             {JSON.stringify(log.data, null, 2)}
                           </pre>

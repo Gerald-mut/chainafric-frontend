@@ -1,4 +1,141 @@
+// Yoruba translations
+export default {
+  // About page
+  aboutUs: "Nipa Wa",
+  welcomeText: "Kaabọ si AfriTrack — dasibodu rẹ fun nini oni-nọmba ni agbaye Ethereum.",
+  descriptionText: "AfriTrack jẹ eto titọpa dukia lati fun ọ ni hihan ni kikun lori blockchain.",
+  ourMission: "Iṣẹ Wa",
+  missionText: "Lati jẹ ki ohun-ini crypto han gbangba ati rọrun lati ni oye.",
+  whatWeDo: "Kini A Nṣe",
+  unifiedWalletTitle: "Wiwo apamọwọ iṣọkan",
+  unifiedWalletDesc: "Tọpa ohun gbogbo ti o ni lori Ethereum ati awọn ẹwọn miiran.",
+  multiStandardTitle: "Atilẹyin Ọpọ-Standard",
+  multiStandardDesc: "ERC-20s, ERC-721s, ERC-1155s.",
+  marketFeedsTitle: "Awọn iroyin Ọja Live",
+  marketFeedsDesc: "Gba awọn iroyin crypto tuntun.",
+  addressIntelTitle: "Oye Adirẹsi",
+  addressIntelDesc: "So awọn adirẹsi pupọ pọ fun awọn oye.",
+  whyAfriTrack: "Kini idi ti AfriTrack?",
+  whyText: "Nitori nini ni crypto ko ni aala.",
+  builtForNextBillion: "Itumọ ti fun awọn Next Billion",
+  builtText: "AfriTrack ti wa ni igberaga kọ pẹlu iranti Afirika.",
+  
+  // Nav items
+  home: "Ile",
+  explore: "Ṣawari",
+  dashboard: "Dasibodu",
+  
+  // Actions
+  connect: "Sopọ",
+  search: "Wa",
+  searchPlaceholder: "Tẹ adirẹsi apamọwọ, orukọ ENS, tabi hash idunadura...",
+  
+  // Other common phrases
+  selectLanguage: "Yan Ede",
 
-// Yoruba translations (placeholder - using English for now)
-import en from './en';
-export default en;
+  // Hero Section
+  heroTitle: "Tọpa eyikeyi apamọwọ lori eyikeyi pq —",
+  heroTitleHighlight: "ni ede rẹ",
+  heroSubtitle: "AfriTrack jẹ aṣawakiri blockchain kan ti a tun wo fun Afirika — pẹlu isunmọ aṣa ati ede.",
+  exploreFeatures: "Ṣawari awọn ẹya diẹ sii",
+  
+  // Address Page
+  walletDetails: "Awọn alaye apamọwọ",
+  error: "Aṣiṣe",
+  failedLoadWallet: "Kuna lati fifuye apamọwọ data",
+  overview: "Akopọ",
+  tokens: "Awọn ami (Tokens)",
+  nfts: "Awọn NFT",
+  transactions: "Awọn iṣowo",
+  balance: "Dọgbadọgba",
+  acrossChains: "Kọja ọpọ ẹwọn",
+  mainnetEthBalance: "Dọgbadọgba Mainnet ETH",
+  recentActivity: "Iṣẹ aipẹ",
+  latestTransactions: "Awọn iṣowo blockchain tuntun",
+  digitalCollectibles: "Awọn akojọpọ oni-nọmba",
+  tokenHoldings: "Awọn didimu ami",
+  erc20Tokens: "ERC-20 àmi",
+  token: "Ami (Token)",
+  valueUsd: "Iye (USD)",
+  nftCollection: "Gbigba NFT",
+  erc721Tokens: "ERC-721 ati ERC-1155 àmi",
+  transactionHistory: "Itan idunadura",
+  recentOnChain: "Iṣẹ ṣiṣe lori-pq to ṣẹṣẹ",
+  transaction: "Idunadura",
+  type: "Iru",
+  value: "Iye",
+  time: "Aago",
+
+  // Transaction Page
+  transactionDetails: "Awọn alaye idunadura",
+  failedLoadTx: "Kuna lati fifuye data idunadura",
+  transactionOverview: "Akopọ idunadura",
+  keyTxInfo: "Alaye idunadura bọtini",
+  txHash: "Idunadura Hash",
+  block: "Àkọsílẹ (Block)",
+  timestamp: "Aago idaduro",
+  from: "Lati",
+  to: "Lati",
+  transactionFee: "Owo Idunadura",
+  gasPrice: "Iye owo gaasi",
+  contractInteraction: "Ibaraẹnisọrọ adehun",
+  contractMethodCalled: "Awọn alaye ọna adehun",
+  contract: "Adehun",
+  function: "Iṣẹ",
+  arguments: "Awọn ariyanjiyan",
+  eventLogs: "Awọn akọọlẹ iṣẹlẹ",
+  eventsEmitted: "Awọn iṣẹlẹ ti o jade lakoko idunadura yii",
+  fromContract: "Lati adehun",
+
+  // News Section
+  newsTitle: "Awọn iroyin & Ẹkọ",
+  newsSubtitle: "Duro ni ifitonileti lori awọn aṣa blockchain tuntun ni Afirika",
+  refreshNews: "Sọ awọn iroyin sọtun",
+  tryAgain: "Gbiyanju lẹẹkansi",
+  noNewsFound: "Ko si iroyin ti a rii fun ẹka yii.",
+  viewAllArticles: "Wo gbogbo awọn nkan",
+  readMore: "Ka siwaju",
+  
+  // Categories
+  all: "Gbogbo",
+  nftsTab: "Awọn NFT",
+  defi: "DeFi",
+  securityAlerts: "Awọn itaniji aabo",
+  learn: "Kọ ẹkọ",
+
+  // Footer
+  footerDesc: "Aṣawakiri blockchain kan ti a tun wo fun Afirika — pẹlu isunmọ aṣa ati ede.",
+  blockchainData: "Blockchain Data",
+  api: "API",
+  about: "Nipa",
+  privacyPolicy: "Eto imulo ipamọ",
+  termsOfService: "Awọn ofin Iṣẹ",
+  allRightsReserved: "Gbogbo awọn ẹtọ wa ni ipamọ.",
+
+  // Explore Page
+  exploreBlockchainData: "Ṣawari Blockchain Data",
+  discoverInsights: "Ṣawari awọn oye kọja awọn ẹwọn pupọ ni ede rẹ.",
+  multiChainAnalytics: "Multi-Chain atupale",
+  trackAssets: "Tọpa awọn ohun-ini lori Ethereum ati bẹbẹ lọ.",
+  walletPortfolio: "Apamọwọ Portfolio",
+  viewTokenBalances: "Wo awọn iṣẹkusẹ.",
+  languageAccessibility: "Wiwọle Ede",
+  accessBlockchain: "Wiwọle blockchain ni awọn ede Afirika.",
+  contractAnalysis: "Ayẹwo Adehun",
+  aiPoweredContract: "AI adehun imọ.",
+  nftGalleryTitle: "NFT Gallery",
+  exploreNftCollections: "Ṣawari NFT gbigba.",
+  airdropTracking: "Airdrop Titele",
+  neverMissAirdrop: "Maṣe padanu airdrop kan.",
+  learnMore: "Kọ ẹkọ diẹ si",
+
+  // Dashboard Page
+  yourDashboard: "Dasibodu rẹ",
+  connectToTrack: "Sopọ lati tọpa rẹ ohun ini.",
+  connectYourWallet: "So apamọwọ rẹ",
+  connectWeb3Wallet: "Sopọ rẹ Web3 apamọwọ.",
+  connectToViewTokens: "Sopọ rẹ apamọwọ lati wo NFT ati tokens.",
+  walletConnected: "Apamọwọ ti a sopọ",
+  totalBalance: "Apapọ iwọntunwọnsi",
+  recentTransactionsTitle: "Awọn iṣowo to ṣẹṣẹ",
+};

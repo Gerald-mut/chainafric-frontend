@@ -4,15 +4,22 @@ import { ArrowRight, Search } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
+import { useTranslation } from "@/utils/i18n";
 
 const HeroSection = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    if (searchQuery.trim()) {
-      navigate(`/address/${searchQuery}`);
+    const query = searchQuery.trim();
+    if (!query) return;
+    
+    if (query.length === 66 && query.startsWith('0x')) {
+      navigate(`/tx/${query}`);
+    } else {
+      navigate(`/address/${query}`);
     }
   };
 
@@ -30,10 +37,10 @@ const HeroSection = () => {
         transition={{ delay: 0.2, duration: 0.5 }}
       >
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-          Track any wallet across any chain — <span className="gradient-text">in your language</span>
+          {t('heroTitle')} <span className="gradient-text">{t('heroTitleHighlight')}</span>
         </h1>
         <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-          AfriTrack is a blockchain explorer reimagined for Africa and the global south — with cultural and linguistic accessibility at its core.
+          {t('heroSubtitle')}
         </p>
 
         <motion.form 
@@ -51,7 +58,7 @@ const HeroSection = () => {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Enter wallet address, ENS name, or transaction hash..."
+              placeholder={t('searchPlaceholder')}
               className="block w-full pl-10 pr-4 py-3 border border-muted bg-muted/50 backdrop-blur-sm rounded-lg focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none text-sm md:text-base"
             />
           </div>
@@ -59,7 +66,7 @@ const HeroSection = () => {
             type="submit" 
             className="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg"
           >
-            Search
+            {t('search')}
           </Button>
         </motion.form>
       </motion.div>
@@ -99,7 +106,7 @@ const HeroSection = () => {
           className="flex items-center gap-2 text-primary hover:text-primary hover:bg-primary/10"
           onClick={() => navigate("/explore")}
         >
-          <span>Explore more features</span>
+          <span>{t('exploreFeatures')}</span>
           <ArrowRight className="h-4 w-4" />
         </Button>
       </motion.div>

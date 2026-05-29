@@ -1,4 +1,141 @@
+// Hausa translations
+export default {
+  // About page
+  aboutUs: "Game da Mu",
+  welcomeText: "Barka da zuwa AfriTrack — dashboard ɗinku don mallakar dijital a cikin duniyar Ethereum.",
+  descriptionText: "AfriTrack tsari ne na lura da kadarori don ba ku cikakkiyar hangen nesa akan blockchain.",
+  ourMission: "Manufar Mu",
+  missionText: "Don sanya mallakar crypto a fili, mai sauƙin shiga, kuma mai fahimta.",
+  whatWeDo: "Abin da Muke Yi",
+  unifiedWalletTitle: "Hangen Wallet Guda Ɗaya",
+  unifiedWalletDesc: "Bincika duk abin da kuke da shi akan Ethereum da sauran sarkoki.",
+  multiStandardTitle: "Goyan bayan Multi-Standard",
+  multiStandardDesc: "ERC-20s, ERC-721s, ERC-1155s.",
+  marketFeedsTitle: "Labaran Kasuwa na Kai-tsaye",
+  marketFeedsDesc: "Sami sabbin labaran crypto.",
+  addressIntelTitle: "Hankalin Adireshi",
+  addressIntelDesc: "Haɗa adireshi da yawa don ƙarin fahimta.",
+  whyAfriTrack: "Me yasa AfriTrack?",
+  whyText: "Saboda mallaka a crypto bashi da iyaka.",
+  builtForNextBillion: "An Gina don Biliyan na Gaba",
+  builtText: "AfriTrack an gina shi da alfahari da Afirka a zuciya.",
+  
+  // Nav items
+  home: "Gida",
+  explore: "Bincika",
+  dashboard: "Allon Kulawa",
+  
+  // Actions
+  connect: "Haɗa",
+  search: "Bincika",
+  searchPlaceholder: "Shigar da adireshin walat, sunan ENS, ko zashin ciniki...",
+  
+  // Other common phrases
+  selectLanguage: "Zaɓi Harshe",
 
-// Hausa translations (placeholder - using English for now)
-import en from './en';
-export default en;
+  // Hero Section
+  heroTitle: "Bi kowane walat a kowane silsila —",
+  heroTitleHighlight: "a cikin yarenku",
+  heroSubtitle: "AfriTrack wani mai bincike ne na blockchain da aka sake tsara shi don Afirka.",
+  exploreFeatures: "Bincika ƙarin fasali",
+  
+  // Address Page
+  walletDetails: "Cikakkun Bayanan Walat",
+  error: "Kuskure",
+  failedLoadWallet: "An kasa loda bayanan walat",
+  overview: "Dubawa",
+  tokens: "Alamu (Tokens)",
+  nfts: "NFTs",
+  transactions: "Ma'amaloli",
+  balance: "Rage",
+  acrossChains: "Fadin sarkoki da yawa",
+  mainnetEthBalance: "Rage Mainnet ETH",
+  recentActivity: "Ayyukan baya-bayan nan",
+  latestTransactions: "Sabbin ma'amaloli na blockchain",
+  digitalCollectibles: "Abubuwan tarawa na dijital",
+  tokenHoldings: "Rikewar Alamu",
+  erc20Tokens: "ERC-20 alamu",
+  token: "Alama (Token)",
+  valueUsd: "Daraja (USD)",
+  nftCollection: "Tarin NFT",
+  erc721Tokens: "Alamu ERC-721 da ERC-1155",
+  transactionHistory: "Tarihin Ma'amala",
+  recentOnChain: "Ayyukan baya-bayan nan akan sarkar",
+  transaction: "Ma'amala",
+  type: "Iri",
+  value: "Daraja",
+  time: "Lokaci",
+
+  // Transaction Page
+  transactionDetails: "Cikakkun Bayanan Ma'amala",
+  failedLoadTx: "An kasa loda bayanan ma'amala",
+  transactionOverview: "Dubawar Ma'amala",
+  keyTxInfo: "Mabuɗin bayanin ma'amala",
+  txHash: "Hash na Ma'amala",
+  block: "Toshe (Block)",
+  timestamp: "Hatimin lokaci",
+  from: "Daga",
+  to: "Zuwa",
+  transactionFee: "Kudin Ma'amala",
+  gasPrice: "Farashin Gas",
+  contractInteraction: "Tattaunawar Kwangila",
+  contractMethodCalled: "Cikakkun bayanan tsarin kwangilar",
+  contract: "Kwangila",
+  function: "Aiki",
+  arguments: "Hujjoji",
+  eventLogs: "Rubutun Taron",
+  eventsEmitted: "Abubuwan da suka faru a lokacin wannan ciniki",
+  fromContract: "Daga kwangila",
+
+  // News Section
+  newsTitle: "Labarai & Ilimi",
+  newsSubtitle: "Kasance da sanarwa game da sabbin abubuwan blockchain a Afirka",
+  refreshNews: "Sake loda labarai",
+  tryAgain: "Sake gwadawa",
+  noNewsFound: "Ba a sami labari don wannan rukunin ba.",
+  viewAllArticles: "Duba duk labarai",
+  readMore: "Kara karantawa",
+  
+  // Categories
+  all: "Duka",
+  nftsTab: "NFTs",
+  defi: "DeFi",
+  securityAlerts: "Faɗakarwar Tsaro",
+  learn: "Koyi",
+
+  // Footer
+  footerDesc: "Mai binciken blockchain wanda aka sake tsara shi don Afirka — tare da al'adu da damar yare a ainihin sa.",
+  blockchainData: "Bayanan Blockchain",
+  api: "API",
+  about: "Game da",
+  privacyPolicy: "Takardar Kebantawa",
+  termsOfService: "Sharuɗɗan Sabis",
+  allRightsReserved: "Dukkan haƙƙoƙi.",
+
+  // Explore Page
+  exploreBlockchainData: "Bincika Bayanan Blockchain",
+  discoverInsights: "Gano basira a fadin sarkoki masu yawa.",
+  multiChainAnalytics: "Bincike Multi-Chain",
+  trackAssets: "Bi diddigin kadarori.",
+  walletPortfolio: "Jakar Wallet",
+  viewTokenBalances: "Duba ragowar alama.",
+  languageAccessibility: "Samun Harshe",
+  accessBlockchain: "Samun damar blockchain a cikin yarenku.",
+  contractAnalysis: "Binciken Kwangila",
+  aiPoweredContract: "Binciken AI.",
+  nftGalleryTitle: "Gidan NFT",
+  exploreNftCollections: "Bincika tarin NFT.",
+  airdropTracking: "Binciken Airdrop",
+  neverMissAirdrop: "Kada ku rasa airdrop.",
+  learnMore: "Koyi ƙari",
+
+  // Dashboard Page
+  yourDashboard: "Dashbodin ku",
+  connectToTrack: "Haɗa walat ɗin ku",
+  connectYourWallet: "Haɗa Walat ɗin ku",
+  connectWeb3Wallet: "Haɗa walat ɗin Web3 ɗin ku",
+  connectToViewTokens: "Haɗa don ganin alamun ku",
+  walletConnected: "An haɗa walat",
+  totalBalance: "Jimlar Kuɗi",
+  recentTransactionsTitle: "Ma'amaloli na baya-bayan nan",
+};

@@ -1,4 +1,141 @@
+// Zulu translations
+export default {
+  // About page
+  aboutUs: "Ngathi",
+  welcomeText: "Uyemukelwa ku-AfriTrack — ideshibhodi yakho yokubuka konke yobunikazi bedijithali emhlabeni we-Ethereum.",
+  descriptionText: "I-AfriTrack wuhlelo lokulandelela izimpahla olwenzelwe ukukunikeza ukubonakala okuphelele ku-blockchain.",
+  ourMission: "Umsebenzi Wethu",
+  missionText: "Ukwenza ubunikazi be-crypto bube sobala, bufikeleleke, futhi buqondakale.",
+  whatWeDo: "Lokho Esikwenzayo",
+  unifiedWalletTitle: "Ukubuka Okuhlanganisiwe Kwe-Wallet",
+  unifiedWalletDesc: "Landelela yonke into onayo ku-Ethereum nakwamanye ama-chain.",
+  multiStandardTitle: "Ukwesekwa Okujwayelekile Okuningi",
+  multiStandardDesc: "Ama-ERC-20, ama-ERC-721, ama-ERC-1155.",
+  marketFeedsTitle: "Izindaba Zemakethe Ezibukhoma",
+  marketFeedsDesc: "Thola izindaba zakamuva ze-crypto nezibuyekezo zezezimali.",
+  addressIntelTitle: "Ubuhlakani Bekheli",
+  addressIntelDesc: "Xhuma amakheli amaningi ukuze uthole imininingwane.",
+  whyAfriTrack: "Kungani i-AfriTrack?",
+  whyText: "Ngoba ubunikazi ku-crypto abunamngcele — kodwa ukubonakala akufanele kube ngumdlalo wokuqagela.",
+  builtForNextBillion: "Yakhelwe Ibhiliyoni Elilandelayo",
+  builtText: "I-AfriTrack yakhiwe ngokuzigqaja kucatshangelwa i-Afrika.",
+  
+  // Nav items
+  home: "Ikhaya",
+  explore: "Hlola",
+  dashboard: "Ideshibhodi",
+  
+  // Actions
+  connect: "Xhuma",
+  search: "Sesha",
+  searchPlaceholder: "Faka ikheli lesikhwama, igama le-ENS, noma i-hashi yokuthengiselana...",
+  
+  // Other common phrases
+  selectLanguage: "Khetha Ulimi",
 
-// Zulu translations (placeholder - using English for now)
-import en from './en';
-export default en;
+  // Hero Section
+  heroTitle: "Landelela noma yisiphi isikhwama kunoma iyiphi i-chain —",
+  heroTitleHighlight: "ngolimi lwakho",
+  heroSubtitle: "I-AfriTrack ingumhloli we-blockchain owakhiwe kabusha e-Afrika — ngokufinyeleleka kwamasiko nezilimi.",
+  exploreFeatures: "Hlola izici ezengeziwe",
+  
+  // Address Page
+  walletDetails: "Imininingwane Ye-Wallet",
+  error: "Iphutha",
+  failedLoadWallet: "Yehlulekile ukulayisha idatha ye-wallet",
+  overview: "Uhlolojikelele",
+  tokens: "Amathokheni",
+  nfts: "Ama-NFT",
+  transactions: "Okwenziwe",
+  balance: "Ibhalansi",
+  acrossChains: "Kuma-chain amaningi",
+  mainnetEthBalance: "Ibhalansi ye-Mainnet ETH",
+  recentActivity: "Umsebenzi Wakamuva",
+  latestTransactions: "Okwenziwe kwakamuva kwe-blockchain",
+  digitalCollectibles: "Amaqoqo edijithali",
+  tokenHoldings: "Ukubanjwa Kwamathokheni",
+  erc20Tokens: "Amathokheni we-ERC-20",
+  token: "Ithokheni",
+  valueUsd: "Inani (USD)",
+  nftCollection: "Iqoqo le-NFT",
+  erc721Tokens: "Amathokheni we-ERC-721 kanye ne-ERC-1155",
+  transactionHistory: "Umlando Wokwenziwe",
+  recentOnChain: "Umsebenzi wakamuva waku-chain",
+  transaction: "Okwenziwayo",
+  type: "Uhlobo",
+  value: "Inani",
+  time: "Isikhathi",
+
+  // Transaction Page
+  transactionDetails: "Imininingwane Yokwenziwe",
+  failedLoadTx: "Yehlulekile ukulayisha idatha yokwenziwe",
+  transactionOverview: "Uhlolojikelele Lokwenziwe",
+  keyTxInfo: "Ulwazi olubalulekile lokwenziwe",
+  txHash: "I-Hashi Yokwenziwe",
+  block: "I-Block",
+  timestamp: "Isitembu sesikhathi",
+  from: "Kusuka",
+  to: "Kuya",
+  transactionFee: "Imali Yokwenziwe",
+  gasPrice: "Inani Legesi",
+  contractInteraction: "Ukusebenzisana Kwenkontileka",
+  contractMethodCalled: "Imininingwane yendlela yenkontileka",
+  contract: "Inkontileka",
+  function: "Umsebenzi",
+  arguments: "Izimpikiswano",
+  eventLogs: "Amalogi Omcimbi",
+  eventsEmitted: "Imicimbi ekhishwe ngesikhathi salokhu kuthengiselana",
+  fromContract: "Kusuka kunkontileka",
+
+  // News Section
+  newsTitle: "Izindaba Nezemfundo",
+  newsSubtitle: "Hlala unolwazi ngamathrendi akamuva e-blockchain, nezexwayiso zokuphepha e-Afrika",
+  refreshNews: "Vuselela izindaba",
+  tryAgain: "Zama futhi",
+  noNewsFound: "Azikho izindaba ezitholakele zalesi sigaba.",
+  viewAllArticles: "Buka zonke izindatshana",
+  readMore: "Funda kabanzi",
+  
+  // Categories
+  all: "Konke",
+  nftsTab: "Ama-NFT",
+  defi: "I-DeFi",
+  securityAlerts: "Izexwayiso Zokuphepha",
+  learn: "Funda",
+
+  // Footer
+  footerDesc: "Umhloli we-blockchain owakhiwe kabusha e-Afrika — ngokufinyeleleka kwamasiko nezilimi.",
+  blockchainData: "Idatha ye-Blockchain",
+  api: "I-API",
+  about: "Mayelana",
+  privacyPolicy: "Inqubomgomo Yobumfihlo",
+  termsOfService: "Imigomo Yesevisi",
+  allRightsReserved: "Wonke Amalungelo Agodliwe.",
+
+  // Explore Page
+  exploreBlockchainData: "Hlola Idatha Ye-Blockchain",
+  discoverInsights: "Zitholele imininingwane kuma-chain amaningi ngolimi oluzwakalayo kuwe.",
+  multiChainAnalytics: "Izibalo Zama-chain Amani",
+  trackAssets: "Landelela izimpahla nokuthengiselana kuyo yonke i-Ethereum, njll.",
+  walletPortfolio: "Iphothifoliyo Yesikhwama",
+  viewTokenBalances: "Buka ezilinganisweni zamathokheni, ama-NFT, njll.",
+  languageAccessibility: "Ukufinyeleleka Kolimi",
+  accessBlockchain: "Finyelela kudatha ye-blockchain ngezilimi ezinkulu zase-Afrika.",
+  contractAnalysis: "Ukuhlaziywa Kwenkontileka",
+  aiPoweredContract: "Ukucwaningwa kwenkontileka okuxhaswe yi-AI.",
+  nftGalleryTitle: "Igalari Ye-NFT",
+  exploreNftCollections: "Hlola amaqoqo e-NFT.",
+  airdropTracking: "Ukulandelela i-Airdrop",
+  neverMissAirdrop: "Ungaphuthelwa yi-airdrop.",
+  learnMore: "Funda kabanzi",
+
+  // Dashboard Page
+  yourDashboard: "Ideshibhodi Yakho",
+  connectToTrack: "Xhuma isikhwama sakho ukulandelela izimpahla zakho.",
+  connectYourWallet: "Xhuma Isikhwama Sakho",
+  connectWeb3Wallet: "Xhuma isikhwama sakho se-Web3.",
+  connectToViewTokens: "Xhuma isikhwama sakho ukuze ubuke amathokheni akho.",
+  walletConnected: "Isikhwama Sixhunyiwe",
+  totalBalance: "Ibhalansi Eyonke",
+  recentTransactionsTitle: "Okwenziwe Kwakamuva",
+};

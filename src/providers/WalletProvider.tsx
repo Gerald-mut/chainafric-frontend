@@ -1,36 +1,23 @@
 
 import React, { ReactNode } from "react";
-import { createConfig, configureChains, WagmiConfig } from "wagmi";
+import { createConfig, WagmiProvider, http } from "wagmi";
 import { mainnet, optimism, arbitrum, base } from "wagmi/chains";
-import { publicProvider } from "wagmi/providers/public";
-import { InjectedConnector } from "wagmi/connectors/injected";
-import { MetaMaskConnector } from "wagmi/connectors/metaMask";
-import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
-
-// Configure chains and providers
-const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [mainnet, optimism, arbitrum, base],
-  [publicProvider()]
-);
-
-// Set up connectors
-const connectors = [
-  new InjectedConnector({ chains }),
-  new MetaMaskConnector({ chains }),
-  new CoinbaseWalletConnector({
-    chains,
-    options: {
-      appName: "AfriTracker",
-    },
-  }),
-];
+import { injected, metaMask, coinbaseWallet } from "wagmi/connectors";
 
 // Create wagmi config
 const config = createConfig({
-  autoConnect: true,
-  connectors,
-  publicClient,
-  webSocketPublicClient,
+  chains: [mainnet, optimism, arbitrum, base],
+  connectors: [
+    injected(),
+    metaMask(),
+    coinbaseWallet({ appName: "AfriTracker" }),
+  ],
+  transports: {
+    [mainnet.id]: http(),
+    [optimism.id]: http(),
+    [arbitrum.id]: http(),
+    [base.id]: http(),
+  },
 });
 
 interface WalletProviderProps {
@@ -38,5 +25,5 @@ interface WalletProviderProps {
 }
 
 export function WalletProvider({ children }: WalletProviderProps) {
-  return <WagmiConfig config={config}>{children}</WagmiConfig>;
+  return <WagmiProvider config={config}>{children}</WagmiProvider>;
 }

@@ -1,4 +1,141 @@
+// Arabic translations
+export default {
+  // About page
+  aboutUs: "معلومات عنا",
+  welcomeText: "مرحبًا بك في AfriTrack — لوحة التحكم الخاصة بك للملكية الرقمية في عالم إيثريوم.",
+  descriptionText: "AfriTrack هو نظام تتبع الأصول متعدد المعايير مصمم لمنحك رؤية كاملة على البلوكشين.",
+  ourMission: "مهمتنا",
+  missionText: "لجعل ملكية العملات المشفرة شفافة وسهلة الوصول ومفهومة.",
+  whatWeDo: "ماذا نفعل",
+  unifiedWalletTitle: "عرض المحفظة الموحد",
+  unifiedWalletDesc: "تتبع كل ما تملكه على إيثريوم والسلاسل الأخرى.",
+  multiStandardTitle: "دعم متعدد المعايير",
+  multiStandardDesc: "ERC-20s, ERC-721s, ERC-1155s.",
+  marketFeedsTitle: "أخبار السوق الحية",
+  marketFeedsDesc: "احصل على أحدث أخبار التشفير.",
+  addressIntelTitle: "ذكاء العنوان",
+  addressIntelDesc: "قم بتوصيل عناوين متعددة للحصول على رؤى.",
+  whyAfriTrack: "لماذا AfriTrack؟",
+  whyText: "لأن الملكية في التشفير بلا حدود.",
+  builtForNextBillion: "بنيت للمليار القادم",
+  builtText: "تم بناء AfriTrack بفخر مع وضع إفريقيا في الاعتبار.",
+  
+  // Nav items
+  home: "الرئيسية",
+  explore: "استكشف",
+  dashboard: "لوحة القيادة",
+  
+  // Actions
+  connect: "اتصال",
+  search: "بحث",
+  searchPlaceholder: "أدخل عنوان المحفظة، اسم ENS، أو تجزئة المعاملة...",
+  
+  // Other common phrases
+  selectLanguage: "اختر اللغة",
 
-// Arabic translations (placeholder - using English for now)
-import en from './en';
-export default en;
+  // Hero Section
+  heroTitle: "تتبع أي محفظة عبر أي سلسلة —",
+  heroTitleHighlight: "بلغتك",
+  heroSubtitle: "AfriTrack هو مستكشف بلوكشين أعيد تصوره لإفريقيا — مع إمكانية الوصول الثقافي واللغوي.",
+  exploreFeatures: "استكشف المزيد من الميزات",
+  
+  // Address Page
+  walletDetails: "تفاصيل المحفظة",
+  error: "خطأ",
+  failedLoadWallet: "فشل في تحميل بيانات المحفظة",
+  overview: "نظرة عامة",
+  tokens: "الرموز (Tokens)",
+  nfts: "NFTs",
+  transactions: "المعاملات",
+  balance: "الرصيد",
+  acrossChains: "عبر سلاسل متعددة",
+  mainnetEthBalance: "رصيد Mainnet ETH",
+  recentActivity: "النشاط الأخير",
+  latestTransactions: "أحدث معاملات البلوكشين",
+  digitalCollectibles: "المقتنيات الرقمية",
+  tokenHoldings: "حيازات الرموز",
+  erc20Tokens: "رموز ERC-20",
+  token: "الرمز",
+  valueUsd: "القيمة (USD)",
+  nftCollection: "مجموعة NFT",
+  erc721Tokens: "رموز ERC-721 و ERC-1155",
+  transactionHistory: "تاريخ المعاملات",
+  recentOnChain: "النشاط الأخير على السلسلة",
+  transaction: "المعاملة",
+  type: "النوع",
+  value: "القيمة",
+  time: "الوقت",
+
+  // Transaction Page
+  transactionDetails: "تفاصيل المعاملة",
+  failedLoadTx: "فشل في تحميل بيانات المعاملة",
+  transactionOverview: "نظرة عامة على المعاملة",
+  keyTxInfo: "معلومات المعاملة الرئيسية",
+  txHash: "تجزئة المعاملة",
+  block: "كتلة (Block)",
+  timestamp: "الطابع الزمني",
+  from: "من",
+  to: "إلى",
+  transactionFee: "رسوم المعاملة",
+  gasPrice: "سعر الغاز",
+  contractInteraction: "تفاعل العقد",
+  contractMethodCalled: "تفاصيل طريقة العقد",
+  contract: "العقد",
+  function: "الوظيفة",
+  arguments: "الوسائط",
+  eventLogs: "سجلات الأحداث",
+  eventsEmitted: "الأحداث المنبعثة خلال هذه المعاملة",
+  fromContract: "من العقد",
+
+  // News Section
+  newsTitle: "الأخبار والتعليم",
+  newsSubtitle: "ابق على اطلاع بأحدث اتجاهات البلوكشين في إفريقيا",
+  refreshNews: "تحديث الأخبار",
+  tryAgain: "حاول مرة أخرى",
+  noNewsFound: "لم يتم العثور على أخبار لهذه الفئة.",
+  viewAllArticles: "عرض جميع المقالات",
+  readMore: "اقرأ المزيد",
+  
+  // Categories
+  all: "الكل",
+  nftsTab: "NFTs",
+  defi: "DeFi",
+  securityAlerts: "تنبيهات أمنية",
+  learn: "تعلم",
+
+  // Footer
+  footerDesc: "مستكشف بلوكشين أعيد تصوره لإفريقيا — مع إمكانية الوصول الثقافي واللغوي.",
+  blockchainData: "بيانات البلوكشين",
+  api: "API",
+  about: "حول",
+  privacyPolicy: "سياسة الخصوصية",
+  termsOfService: "شروط الخدمة",
+  allRightsReserved: "جميع الحقوق محفوظة.",
+
+  // Explore Page
+  exploreBlockchainData: "استكشف بيانات البلوكشين",
+  discoverInsights: "اكتشف الرؤى عبر سلاسل متعددة بلغتك.",
+  multiChainAnalytics: "تحليلات متعددة السلاسل",
+  trackAssets: "تتبع الأصول.",
+  walletPortfolio: "محفظة الأصول",
+  viewTokenBalances: "عرض أرصدة الرموز.",
+  languageAccessibility: "سهولة الوصول اللغوي",
+  accessBlockchain: "الوصول إلى بيانات البلوكشين.",
+  contractAnalysis: "تحليل العقود",
+  aiPoweredContract: "تدقيق العقود المدعوم بالذكاء الاصطناعي.",
+  nftGalleryTitle: "معرض NFT",
+  exploreNftCollections: "استكشف مجموعات NFT.",
+  airdropTracking: "تتبع Airdrop",
+  neverMissAirdrop: "لا تفوت أي Airdrop.",
+  learnMore: "اعرف المزيد",
+
+  // Dashboard Page
+  yourDashboard: "لوحة القيادة الخاصة بك",
+  connectToTrack: "قم بتوصيل محفظتك لتتبع الأصول الخاصة بك",
+  connectYourWallet: "قم بتوصيل محفظتك",
+  connectWeb3Wallet: "قم بتوصيل محفظة Web3 الخاصة بك",
+  connectToViewTokens: "قم بتوصيل محفظتك لعرض الرموز الخاصة بك",
+  walletConnected: "المحفظة متصلة",
+  totalBalance: "إجمالي الرصيد",
+  recentTransactionsTitle: "المعاملات الأخيرة",
+};

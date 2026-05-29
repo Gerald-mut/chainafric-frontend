@@ -1,115 +1,136 @@
+import { Alchemy, Network, Utils } from "alchemy-sdk";
 
-// Mock data for demonstration - in a real app you would use a blockchain API
-const mockTransactions = {
-  "0x123456789abcdef": {
-    hash: "0x123456789abcdef",
-    blockNumber: 14356789,
-    timestamp: "2023-10-15 14:23:18",
-    from: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
-    to: "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984",
-    direction: "outgoing",
-    value: "0.5",
-    symbol: "ETH",
-    nativeSymbol: "ETH",
-    fee: "0.002134",
-    gasPrice: "15",
-    status: "success",
-    contractInteraction: true,
-    contractAddress: "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984",
-    method: "transfer(address _to, uint256 _value)",
-    arguments: {
-      _to: "0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B",
-      _value: "500000000000000000"
-    },
-    logs: [
-      {
-        event: "Transfer",
-        address: "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984",
-        data: {
-          from: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
-          to: "0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B",
-          value: "0.5"
-        }
-      }
-    ]
-  },
-  "0xabcdef123456789": {
-    hash: "0xabcdef123456789",
-    blockNumber: 14356790,
-    timestamp: "2023-10-15 14:25:42",
-    from: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
-    to: "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
-    direction: "outgoing",
-    value: "0",
-    symbol: "ETH",
-    nativeSymbol: "ETH",
-    fee: "0.005672",
-    gasPrice: "18",
-    status: "success",
-    contractInteraction: true,
-    contractAddress: "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
-    method: "swapExactETHForTokens(uint amountOutMin, address[] path, address to, uint deadline)",
-    arguments: {
-      amountOutMin: "4500000000",
-      path: ["0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2", "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984"],
-      to: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
-      deadline: "1634310342"
-    },
-    logs: [
-      {
-        event: "Swap",
-        address: "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
-        data: {
-          sender: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
-          amount0In: "0.3",
-          amount1In: "0",
-          amount0Out: "0",
-          amount1Out: "45.23"
-        }
-      }
-    ]
-  }
+// Initialize Alchemy. NOTE: In a real production app, use an environment variable for the API key.
+// 'demo' will work for basic limited testing on mainnet.
+const settings = {
+  apiKey: "demo", 
+  network: Network.ETH_MAINNET,
 };
+const alchemy = new Alchemy(settings);
 
-// Function to fetch wallet data - Replace with real API calls in production
 export const fetchWalletData = async (address: string) => {
-  // Simulate API call delay
-  await new Promise(resolve => setTimeout(resolve, 1000));
-  
-  return {
-    address,
-    ens: address === "0x742d35Cc6634C0532925a3b844Bc454e4438f44e" ? "afritracker.eth" : null,
-    balance: {
-      eth: "1.324",
-      matic: "245.67",
-      bnb: "5.432",
-    },
-    tokens: [
-      { symbol: "USDT", balance: "1,234.56", price: 1.0, value: 1234.56 },
-      { symbol: "LINK", balance: "50.5", price: 14.23, value: 718.62 },
-      { symbol: "UNI", balance: "12.34", price: 7.89, value: 97.36 }
-    ],
-    nfts: [
-      { id: "1", collection: "Bored Ape", name: "BAYC #1234", image: "https://images.unsplash.com/photo-1578353022142-09360f53d6b4?q=80&w=300" },
-      { id: "2", collection: "CryptoPunks", name: "Punk #5678", image: "https://images.unsplash.com/photo-1616077168627-cc3c436b9c35?q=80&w=300" }
-    ],
-    transactions: [
-      { hash: "0x123456789abcdef", type: "transfer", value: "0.5 ETH", time: "2h ago", status: "confirmed" },
-      { hash: "0xabcdef123456789", type: "swap", value: "0.3 ETH → 45.23 UNI", time: "2h ago", status: "confirmed" }
-    ]
-  };
+  try {
+    // 1. Fetch ETH Balance
+    const balanceWei = await alchemy.core.getBalance(address, "latest");
+    const ethBalance = Utils.formatEther(balanceWei.toString());
+
+    // 2. Fetch ENS Name
+    let ens = null;
+    try {
+      // Alchemy doesn't have a direct ENS reverse lookup in core easily exposed without custom RPC,
+      // but we can try to resolve it if possible, or just leave it null for now.
+      // Ethers provider has lookupAddress, but we will mock ENS for simplicity if not using ethers directly.
+      ens = address.toLowerCase() === "0xd8da6bf26964af9d7eed9e03e53415d37aa96045" ? "vitalik.eth" : null;
+    } catch (e) {
+      console.warn("ENS lookup failed", e);
+    }
+
+    // 3. Fetch Token Balances
+    const tokenBalancesResponse = await alchemy.core.getTokenBalances(address);
+    const nonZeroTokens = tokenBalancesResponse.tokenBalances.filter(
+      (token) => token.tokenBalance !== "0" && token.tokenBalance !== "0x0"
+    );
+
+    // Fetch token metadata for a few tokens to show symbols
+    const tokens = [];
+    for (let i = 0; i < Math.min(nonZeroTokens.length, 5); i++) {
+      const token = nonZeroTokens[i];
+      try {
+        const metadata = await alchemy.core.getTokenMetadata(token.contractAddress);
+        let balance = 0;
+        if (token.tokenBalance && metadata.decimals) {
+          balance = parseFloat(token.tokenBalance) / Math.pow(10, metadata.decimals);
+        }
+        tokens.push({
+          symbol: metadata.symbol || "Unknown",
+          balance: balance.toFixed(4),
+          price: 0, // Would need a price oracle (e.g. CoinGecko API) for real prices
+          value: 0,
+        });
+      } catch (e) {
+        console.warn("Token metadata fetch failed", e);
+      }
+    }
+
+    // 4. Fetch NFTs
+    const nftsResponse = await alchemy.nft.getNftsForOwner(address, { pageSize: 5 });
+    const nfts = nftsResponse.ownedNfts.map((nft) => ({
+      id: nft.tokenId,
+      collection: nft.contract.name || "Unknown Collection",
+      name: nft.title || `${nft.contract.symbol || 'NFT'} #${nft.tokenId}`,
+      image: nft.image.cachedUrl || nft.image.originalUrl || "https://images.unsplash.com/photo-1616077168627-cc3c436b9c35?q=80&w=300",
+    }));
+
+    // 5. Fetch Recent Transactions (Asset Transfers)
+    const transfersResponse = await alchemy.core.getAssetTransfers({
+      fromBlock: "0x0",
+      fromAddress: address,
+      category: ["external", "erc20", "erc721", "erc1155"],
+      maxCount: 5,
+    });
+
+    const transactions = transfersResponse.transfers.map((tx) => ({
+      hash: tx.hash,
+      type: tx.category,
+      value: tx.value ? `${tx.value} ${tx.asset}` : `1 ${tx.asset}`,
+      time: "Recent", // Alchemy doesn't return timestamps in getAssetTransfers by default
+      status: "confirmed",
+    }));
+
+    return {
+      address,
+      ens,
+      balance: {
+        eth: parseFloat(ethBalance).toFixed(4),
+        matic: "0.00",
+        bnb: "0.00",
+      },
+      tokens: tokens.length > 0 ? tokens : [
+        { symbol: "USDT", balance: "0.00", price: 1.0, value: 0 }
+      ],
+      nfts,
+      transactions,
+    };
+  } catch (error) {
+    console.error("Error fetching wallet data:", error);
+    throw new Error("Failed to fetch wallet data from blockchain.");
+  }
 };
 
-// Function to fetch transaction data - Replace with real API calls in production
 export const fetchTransactionData = async (txHash: string) => {
-  // Simulate API call delay
-  await new Promise(resolve => setTimeout(resolve, 1000));
-  
-  // Return mock data based on txHash
-  const transaction = mockTransactions[txHash as keyof typeof mockTransactions];
-  if (!transaction) {
-    throw new Error("Transaction not found");
+  try {
+    const tx = await alchemy.core.getTransactionReceipt(txHash);
+    if (!tx) throw new Error("Transaction not found");
+    
+    const txDetails = await alchemy.core.getTransaction(txHash);
+
+    return {
+      hash: tx.transactionHash,
+      blockNumber: tx.blockNumber,
+      timestamp: "Unknown", // Needs block fetching for timestamp
+      from: tx.from,
+      to: tx.to,
+      direction: "outgoing",
+      value: txDetails ? Utils.formatEther(txDetails.value.toString()) : "0",
+      symbol: "ETH",
+      nativeSymbol: "ETH",
+      fee: Utils.formatEther((tx.gasUsed.toBigInt() * tx.effectiveGasPrice.toBigInt()).toString()),
+      gasPrice: Utils.formatUnits(tx.effectiveGasPrice.toString(), "gwei"),
+      status: tx.status === 1 ? "success" : "failed",
+      contractInteraction: tx.to !== null && tx.logs.length > 0,
+      contractAddress: tx.contractAddress || tx.to,
+      method: "Unknown (Requires ABI)",
+      arguments: {},
+      logs: tx.logs.map(log => ({
+        event: "Unknown",
+        address: log.address,
+        data: {
+          raw: log.data
+        }
+      }))
+    };
+  } catch (error) {
+    console.error("Error fetching transaction data:", error);
+    throw new Error("Failed to fetch transaction data from blockchain.");
   }
-  
-  return transaction;
 };

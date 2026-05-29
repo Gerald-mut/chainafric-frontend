@@ -4,8 +4,11 @@ import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
+import { useTranslation } from "@/utils/i18n";
 
 const ExplorePage = () => {
+  const { t } = useTranslation();
+
   return (
     <Layout>
       <div className="container mx-auto px-4 py-12 mt-16">
@@ -15,53 +18,59 @@ const ExplorePage = () => {
           transition={{ duration: 0.5 }}
         >
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h1 className="text-4xl font-bold mb-4">Explore Blockchain Data</h1>
+            <h1 className="text-4xl font-bold mb-4">{t('exploreBlockchainData')}</h1>
             <p className="text-xl text-muted-foreground">
-              Discover insights across multiple chains in a language that makes sense to you.
+              {t('discoverInsights')}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <FeatureCard
-              title="Multi-Chain Analytics"
-              description="Track assets and transactions across Ethereum, BNB Chain, Polygon, and more — all in one place."
+              title={t('multiChainAnalytics')}
+              description={t('trackAssets')}
               link="/chains"
               delay={0.1}
+              t={t}
             />
             
             <FeatureCard
-              title="Wallet Portfolio"
-              description="View token balances, NFTs, transaction history, and cross-chain activity for any wallet address."
+              title={t('walletPortfolio')}
+              description={t('viewTokenBalances')}
               link="/dashboard"
               delay={0.2}
+              t={t}
             />
             
             <FeatureCard
-              title="Language Accessibility"
-              description="Access blockchain data in major African languages, making Web3 accessible to everyone."
+              title={t('languageAccessibility')}
+              description={t('accessBlockchain')}
               link="/languages"
               delay={0.3}
+              t={t}
             />
             
             <FeatureCard
-              title="Contract Analysis"
-              description="AI-powered contract auditing and summarization to understand potential risks and opportunities."
+              title={t('contractAnalysis')}
+              description={t('aiPoweredContract')}
               link="/contracts"
               delay={0.4}
+              t={t}
             />
             
             <FeatureCard
-              title="NFT Gallery"
-              description="Explore NFT collections with detailed metadata and transaction history across marketplaces."
+              title={t('nftGalleryTitle')}
+              description={t('exploreNftCollections')}
               link="/nfts"
               delay={0.5}
+              t={t}
             />
             
             <FeatureCard
-              title="Airdrop Tracking"
-              description="Never miss an airdrop with notifications and tracking for eligible wallets."
+              title={t('airdropTracking')}
+              description={t('neverMissAirdrop')}
               link="/airdrops"
               delay={0.6}
+              t={t}
             />
           </div>
         </motion.div>
@@ -74,12 +83,14 @@ const FeatureCard = ({
   title, 
   description, 
   link, 
-  delay 
+  delay,
+  t
 }: { 
   title: string; 
   description: string;
   link: string;
   delay: number;
+  t: any;
 }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
@@ -93,7 +104,7 @@ const FeatureCard = ({
       </CardHeader>
       <CardContent className="flex justify-end">
         <Button variant="ghost" size="sm" className="text-primary">
-          <span>Learn more</span>
+          <span>{t('learnMore')}</span>
           <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
       </CardContent>

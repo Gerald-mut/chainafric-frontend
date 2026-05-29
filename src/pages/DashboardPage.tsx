@@ -6,9 +6,11 @@ import { useWalletConnection } from "@/hooks/useWalletConnection";
 import ConnectWallet from "@/components/ConnectWallet";
 import WalletDetails from "@/components/WalletDetails";
 import { Wallet } from "lucide-react";
+import { useTranslation } from "@/utils/i18n";
 
 const DashboardPage = () => {
   const { isConnected } = useWalletConnection();
+  const { t } = useTranslation();
 
   return (
     <Layout>
@@ -19,24 +21,24 @@ const DashboardPage = () => {
           transition={{ duration: 0.5 }}
         >
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl font-bold mb-4">Your Dashboard</h1>
+            <h1 className="text-4xl font-bold mb-4">{t('yourDashboard')}</h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Connect your wallet to track your assets and activity
+              {t('connectToTrack')}
             </p>
             
             {!isConnected ? (
               <Card className="glass-card">
                 <CardHeader>
-                  <CardTitle>Connect Your Wallet</CardTitle>
+                  <CardTitle>{t('connectYourWallet')}</CardTitle>
                   <CardDescription>
-                    Connect your Web3 wallet to view your personalized dashboard
+                    {t('connectWeb3Wallet')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-col items-center justify-center py-12">
                     <Wallet className="h-16 w-16 text-muted-foreground mb-4" />
                     <p className="text-center mb-6 max-w-md text-muted-foreground">
-                      Connect your wallet to view your tokens, NFTs, transaction history and more — all in one place.
+                      {t('connectToViewTokens')}
                     </p>
                     <ConnectWallet />
                   </div>
@@ -46,14 +48,14 @@ const DashboardPage = () => {
               <div className="space-y-6">
                 <Card className="glass-card">
                   <CardHeader>
-                    <CardTitle>Wallet Connected</CardTitle>
+                    <CardTitle>{t('walletConnected')}</CardTitle>
                     <CardDescription>
                       <WalletDetails />
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="flex justify-between mb-4">
-                      <span className="text-muted-foreground">Total Balance</span>
+                      <span className="text-muted-foreground">{t('totalBalance')}</span>
                       <span className="font-bold">$2,345.67</span>
                     </div>
                     <div className="space-y-2">
@@ -76,7 +78,7 @@ const DashboardPage = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <Card className="glass-card">
                     <CardHeader>
-                      <CardTitle>Recent Transactions</CardTitle>
+                      <CardTitle>{t('recentTransactionsTitle')}</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <div className="space-y-4">
@@ -98,7 +100,7 @@ const DashboardPage = () => {
                   
                   <Card className="glass-card">
                     <CardHeader>
-                      <CardTitle>NFT Collection</CardTitle>
+                      <CardTitle>{t('nftCollection')}</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <div className="grid grid-cols-3 gap-2">

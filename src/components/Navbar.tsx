@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import { Search, Menu, X, Wallet } from "lucide-react";
@@ -15,10 +15,17 @@ const Navbar = () => {
   const { connectWallet, isConnected, address } = useWalletConnection();
   const { t } = useTranslation();
   
+  const navigate = useNavigate();
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    if (searchQuery.trim()) {
-      window.location.href = `/address/${searchQuery}`;
+    const query = searchQuery.trim();
+    if (!query) return;
+    
+    if (query.length === 66 && query.startsWith('0x')) {
+      navigate(`/tx/${query}`);
+    } else {
+      navigate(`/address/${query}`);
     }
   };
 
